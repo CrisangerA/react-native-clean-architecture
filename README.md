@@ -10,7 +10,7 @@ Install libs
 bun install
 ```
 
-### 1. Firebase
+## 1. Firebase
 
 - 1.1 Crear un nuevo proyecto de firebase y agregar la app de Android e iOS o utilizar un proyecto de firebase existente
 - 1.2 Configurar Android (google-service.json)
@@ -35,12 +35,12 @@ import Firebase
 FirebaseApp.configure()
 ```
 
-### 2. GCloud
+## 2. GCloud
 
 - 2.1 Agregar una nueva credencial de tipo OAuth para Android y iOS
 - 2.2 Copiar las credenciales en el archivo src/config/secure-store.json
 
-### 3. Run Project
+## 3. Run Project
 
 ```bash
 bun start
