@@ -1,5 +1,7 @@
 # React Native Clean Architecture Template
 
+👾 Simple and minimalistic template developed with clean architecture structure focused on maintainability and scalability.
+
 ## Get started
 
 Install libs
