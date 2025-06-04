@@ -11,10 +11,11 @@
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@modules/*": ["src/modules/*"],
-      "@config/*": ["src/config/*"],
       "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@config/*": ["src/config/*"],
+      "@containers/*": ["src/containers/*"],
+      "@modules/*": ["src/modules/*"],
       "@theme/*": ["src/theme/*"]
     }
   }
