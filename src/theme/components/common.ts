@@ -1,3 +1,4 @@
+import { horizontalScale, verticalScale } from '@theme/responsive';
 import { StyleSheet } from 'react-native';
 
 export const commonStyles = StyleSheet.create({
@@ -17,21 +18,21 @@ export const commonStyles = StyleSheet.create({
     width: '100%',
   },
   padding: {
-    padding: 16,
+    padding: horizontalScale(16),
   },
   paddingHorizontal: {
-    paddingHorizontal: 16,
+    paddingHorizontal: horizontalScale(16),
   },
   paddingVertical: {
-    paddingVertical: 16,
+    paddingVertical: verticalScale(16),
   },
   margin: {
-    margin: 16,
+    margin: horizontalScale(16),
   },
   marginHorizontal: {
-    marginHorizontal: 16,
+    marginHorizontal: horizontalScale(16),
   },
   marginVertical: {
-    marginVertical: 16,
+    marginVertical: verticalScale(16),
   },
 });
