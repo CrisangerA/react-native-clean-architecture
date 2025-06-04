@@ -3,13 +3,13 @@ import { Image, View, ImageSourcePropType } from 'react-native';
 import { horizontalScale, AVATAR_STYLES, AvatarType } from '@theme/index';
 
 interface AvatarProps {
-  source: ImageSourcePropType;
+  source?: ImageSourcePropType;
   size?: number;
   type?: keyof AvatarType;
 }
 
 const Avatar: React.FC<AvatarProps> = ({
-  source,
+  source = { uri: 'https://cdn2.thecatapi.com/images/ebv.jpg' },
   size = 50,
   type = 'profile',
 }) => {
@@ -23,6 +23,7 @@ const Avatar: React.FC<AvatarProps> = ({
   }, [size]);
 
   const styles = AVATAR_STYLES[type];
+
   return (
     <View style={styles.container}>
       <Image source={source} style={[styles.image, imageSize]} />

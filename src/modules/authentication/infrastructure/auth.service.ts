@@ -9,15 +9,13 @@ import {
   signOut,
 } from '@react-native-firebase/auth';
 import AuthRepository from '../domain/repository/auth.repository';
+import SecretManager from '@config/secure-store.json';
 
 class FirebaseAuthService implements AuthRepository {
   constructor() {
     GoogleSignin.configure({
-      //webClientId: '330813650595-u6v41oob8m4l1rdpj18vhvjhg17hltk7.apps.googleusercontent.com',
-      webClientId:
-        '330813650595-u6v41oob8m4l1rdpj18vhvjhg17hltk7.apps.googleusercontent.com',
-      iosClientId:
-        '330813650595-j7ofb1e2idb4e706vu7jmi8udssh91lm.apps.googleusercontent.com',
+      webClientId: SecretManager.webClientId,
+      iosClientId: SecretManager.iosClientId,
     });
   }
 

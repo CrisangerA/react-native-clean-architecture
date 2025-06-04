@@ -9,9 +9,9 @@ import { commonStyles } from '@theme/index';
 export default function ProfileScreen() {
   const [ipData, setIpData] = useState<any>(null);
   const [loadingIpData, setLoadingIpData] = useState(true);
+
   const { user } = useUserStorage();
-  const { mutateAsync: signOut, isPending: isSigningOut } =
-    useMutationSignOut();
+  const { mutateAsync: signOut, isPending } = useMutationSignOut();
 
   const handleSignOut = async () => {
     await signOut();
@@ -48,7 +48,10 @@ export default function ProfileScreen() {
   return (
     <BaseLayout style={styles.container}>
       <View style={commonStyles.centerContainer}>
-        <Avatar source={{ uri: user.imageUrl }} size={100} />
+        <Avatar
+          {...(user.imageUrl && { source: { uri: user.imageUrl } })}
+          size={100}
+        />
         <Margin top={20} />
         <Text font="h2Medium">{user.name || user.email}</Text>
         <Margin top={10} />
@@ -68,10 +71,10 @@ export default function ProfileScreen() {
       <Margin top={30} />
       <Margin top={30} />
       <Button
-        title="Cerrar Sesión"
+        title={isPending ? 'Saliendo...' : 'Cerrar Sesión'}
         onPress={handleSignOut}
         type="primary"
-        isLoading={isSigningOut}
+        isLoading={isPending}
       />
     </BaseLayout>
   );

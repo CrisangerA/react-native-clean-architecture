@@ -16,10 +16,12 @@ export function useAuth() {
     (user: FirebaseAuthTypes.User | null) => {
       if (user) {
         // Si hay un usuario autenticado, actualizar el estado
-        !isAuthenticated && login();
-      } else {
+        //!isAuthenticated &&
+        login();
+      } else if (user === null) {
         // Si no hay usuario, asegurarse de que el estado refleje esto
-        isAuthenticated && logout();
+        //isAuthenticated &&
+        logout();
       }
 
       if (initializing) {
@@ -27,7 +29,7 @@ export function useAuth() {
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [isAuthenticated],
   );
 
   useEffect(() => {
