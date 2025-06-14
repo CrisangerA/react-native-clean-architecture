@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { type FirebaseAuthTypes, getAuth } from '@react-native-firebase/auth';
 import { useAuthStorage } from '@modules/authentication/infrastructure/auth-local.storage';
 import { useQueryUserHasOnboarding } from '@modules/user/application/queries';
+import { logger } from '@config/logger';
 
 /**
  * Hook para manejar el estado de autenticación utilizando Firebase Auth
@@ -14,6 +15,7 @@ export function useAuth() {
   // Manejador para cambios en el estado de autenticación
   const onAuthStateChanged = useCallback(
     (user: FirebaseAuthTypes.User | null) => {
+      logger('AUTH_STATE_CHANGE', user);
       if (user) {
         // Si hay un usuario autenticado, actualizar el estado
         //!isAuthenticated &&
