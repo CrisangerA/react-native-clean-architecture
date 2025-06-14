@@ -1,14 +1,18 @@
 import React from 'react';
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
-import { Text, TextProps } from './index';
+import { TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+
+import { Text } from './index';
 import { BUTTON_STYLES, ButtonType } from '@theme/index';
+import Icon from './Icon';
 
 interface ButtonProps extends TouchableOpacityProps {
   onPress: () => void;
   title: string;
   type?: keyof ButtonType;
-  text?: TextProps;
   isLoading?: boolean;
+  // Icon
+  icon?: string;
+  iconPosition?: 'left' | 'right';
 }
 
 /**
@@ -22,10 +26,11 @@ interface ButtonProps extends TouchableOpacityProps {
 export default function Button({
   onPress,
   title,
-  text,
   type = 'primary',
   isLoading,
   disabled,
+  icon,
+  iconPosition = 'left',
 }: ButtonProps) {
   if (isLoading || disabled) {
     type = 'disabled';
@@ -38,7 +43,17 @@ export default function Button({
       onPress={onPress}
       disabled={isLoading || disabled}
     >
-      <Text title={title} style={styles.text} {...text} />
+      {icon && iconPosition === 'left' && (
+        <View>
+          <Icon name={icon} color={styles.text.color as string} />
+        </View>
+      )}
+      <Text title={title} style={styles.text} />
+      {icon && iconPosition === 'right' && (
+        <View>
+          <Icon name={icon} color={styles.text.color as string} />
+        </View>
+      )}
     </TouchableOpacity>
   );
 }

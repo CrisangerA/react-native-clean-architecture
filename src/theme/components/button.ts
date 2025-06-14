@@ -15,9 +15,12 @@ export type ButtonType = {
 };
 
 const baseStyle: ViewStyle = {
-  paddingVertical: SPACING.sm,
   ...commonStyles.card,
+  ...commonStyles.row,
+  justifyContent: 'center',
+  paddingVertical: SPACING.sm,
   borderRadius: BORDERS.sm,
+  gap: SPACING.xs,
 };
 
 const baseTextStyle: TextStyle = {

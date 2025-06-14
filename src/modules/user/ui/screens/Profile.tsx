@@ -16,16 +16,20 @@ export default function ProfileScreen() {
 
   return (
     <BaseLayout>
-      <View style={commonStyles.centerContainer}>
+      <View style={[commonStyles.centerContainer, commonStyles.flex]}>
         <Avatar
           {...(user.imageUrl && { source: { uri: user.imageUrl } })}
           size={100}
         />
-        <Margin top={20} />
-        <Text font="h2Medium">{user.name || user.email}</Text>
-        <Margin top={10} />
-        <Text font="bodyMRegular">{user.email}</Text>
       </View>
+      <Margin top={20} />
+      <Text font="h2Medium" align="center">
+        {user.name || user.email}
+      </Text>
+      <Margin top={10} />
+      <Text font="bodyMRegular" align="center">
+        {user.email}
+      </Text>
       <Margin top={30} />
       <Margin top={30} />
       <Margin top={30} />
@@ -34,6 +38,7 @@ export default function ProfileScreen() {
         onPress={handleSignOut}
         type="primary"
         isLoading={isPending}
+        icon="logout"
       />
     </BaseLayout>
   );

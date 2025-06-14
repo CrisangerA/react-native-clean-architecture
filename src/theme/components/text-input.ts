@@ -1,9 +1,11 @@
-import { Platform, ViewStyle } from 'react-native';
+import { Platform, TextStyle, ViewStyle } from 'react-native';
 
 import { ContainerTextStyle } from './index';
 import { COLORS } from '../colors';
-import { horizontalScale } from '@theme/responsive';
-import { BORDERS } from '@theme/borders';
+import { TEXT_STYLES } from './text';
+import { horizontalScale } from '../responsive';
+import { BORDERS } from '../borders';
+import { commonStyles } from '../common';
 
 export type TextInputType = {
   primary: ContainerTextStyle;
@@ -12,17 +14,23 @@ export type TextInputType = {
 };
 
 const baseStyle: ViewStyle = {
+  ...commonStyles.row,
   borderWidth: 1,
   borderColor: COLORS.outline,
   borderRadius: BORDERS.sm,
   paddingHorizontal: Platform.select({
-    ios: horizontalScale(14),
-    android: horizontalScale(10),
+    ios: horizontalScale(10),
+    android: horizontalScale(8),
   }),
   paddingVertical: Platform.select({
     ios: horizontalScale(12),
     android: horizontalScale(0),
   }),
+};
+
+const baseTextStyle: TextStyle = {
+  ...TEXT_STYLES.bodySRegular,
+  color: COLORS.primary,
 };
 
 export const TEXT_INPUT_STYLES: Record<
@@ -35,6 +43,7 @@ export const TEXT_INPUT_STYLES: Record<
       backgroundColor: COLORS.surface,
     },
     text: {
+      ...baseTextStyle,
       color: COLORS.onSurface,
     },
   },
@@ -44,6 +53,7 @@ export const TEXT_INPUT_STYLES: Record<
       borderColor: COLORS.error,
     },
     text: {
+      ...baseTextStyle,
       color: COLORS.error,
     },
   },
@@ -53,6 +63,7 @@ export const TEXT_INPUT_STYLES: Record<
       backgroundColor: COLORS.outline,
     },
     text: {
+      ...baseTextStyle,
       color: COLORS.onSurface,
     },
   },

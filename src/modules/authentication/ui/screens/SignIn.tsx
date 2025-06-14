@@ -20,7 +20,12 @@ export default function SignIn() {
     <BaseLayout>
       <Text title={app.displayName} font="h1Medium" />
       <Margin top={20} />
-      <Button title="Iniciar Sesión" onPress={handleSubmit} type="primary" />
+      <Button
+        title="Iniciar Sesión"
+        onPress={handleSubmit}
+        type="primary"
+        icon="login"
+      />
     </BaseLayout>
   );
 }

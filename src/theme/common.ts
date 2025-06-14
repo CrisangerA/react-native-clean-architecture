@@ -6,7 +6,6 @@ import { SPACING } from './spacing';
 export const commonStyles = StyleSheet.create({
   flex: { flex: 1 },
   centerContainer: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

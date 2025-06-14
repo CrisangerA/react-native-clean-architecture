@@ -14,6 +14,7 @@ import ComponentsScreen from '@modules/user/ui/screens/Components';
 import { screenWidth } from '@theme/responsive';
 import { PrivateRoutes, PrivateStackParamsList } from '../domain/model';
 import { COLORS } from '@theme/colors';
+import { Icon } from '@components/core';
 
 const Tab = createBottomTabNavigator<PrivateStackParamsList>();
 export const useNavigationPrivate = () =>
@@ -51,16 +52,27 @@ const slideAnimationOptions = {
   }),
 };
 
+const ICONS_NAV = {
+  [PrivateRoutes.Components]: 'home',
+  [PrivateRoutes.Example]: 'image-multiple',
+  [PrivateRoutes.Profile]: 'account',
+};
 export default function PrivateRoutesStack() {
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={({ route }) => ({
         headerShown: false,
         lazy: true,
         tabBarStyle: {
           backgroundColor: COLORS.background,
         },
-      }}
+        tabBarIcon: ({}) => {
+          const icon = ICONS_NAV[route.name];
+          return <Icon name={icon} size={24} />;
+        },
+        tabBarActiveTintColor: COLORS.primary,
+        tabBarInactiveTintColor: COLORS.outline,
+      })}
     >
       <Tab.Screen
         name={PrivateRoutes.Components}

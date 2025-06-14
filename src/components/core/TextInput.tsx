@@ -3,15 +3,20 @@ import {
   View,
   TextInput as RNTextInput,
   TextInputProps as RNTextInputProps,
+  StyleSheet,
 } from 'react-native';
-import { Margin, Text, TextProps } from './index';
+import { Icon, Margin, Text, TextProps } from './index';
 import { TEXT_INPUT_STYLES, TextInputType } from '@theme/components';
+import { SPACING } from '@theme/spacing';
 
 interface TextInputProps extends RNTextInputProps {
   label?: string;
   error?: string;
   labelProps?: TextProps;
   type?: keyof TextInputType;
+  // icon
+  iconLeft?: string;
+  iconRight?: string;
 }
 
 /**
@@ -30,15 +35,46 @@ export default function TextInput({
   labelProps,
   error,
   type = 'primary',
+  iconLeft,
+  iconRight,
   ...props
 }: TextInputProps) {
   const styles = TEXT_INPUT_STYLES[type];
 
   return (
     <View>
-      {label && <Text title={label} font="bodyMRegular" {...labelProps} />}
+      {label && (
+        <Margin bottom={4}>
+          <Text title={label} font="bodySRegular" {...labelProps} />
+        </Margin>
+      )}
       <View style={styles.container}>
-        <RNTextInput style={styles.text} {...props} />
+        {iconLeft && (
+          <View>
+            <Icon
+              name={iconLeft}
+              size={SPACING.lg}
+              color={styles.text.color as string}
+            />
+          </View>
+        )}
+        <RNTextInput
+          style={[
+            styles.text,
+            iconLeft && localStyles.textIconLeft,
+            iconRight && localStyles.textIconRight,
+          ]}
+          {...props}
+        />
+        {iconRight && (
+          <View style={localStyles.iconRight}>
+            <Icon
+              name={iconRight}
+              size={SPACING.lg}
+              color={styles.text.color as string}
+            />
+          </View>
+        )}
       </View>
       {error && (
         <Margin top={4}>
@@ -48,3 +84,16 @@ export default function TextInput({
     </View>
   );
 }
+
+const localStyles = StyleSheet.create({
+  textIconLeft: {
+    paddingLeft: SPACING.xs,
+  },
+  iconRight: {
+    position: 'absolute',
+    right: SPACING.sm,
+  },
+  textIconRight: {
+    paddingRight: SPACING.lg,
+  },
+});

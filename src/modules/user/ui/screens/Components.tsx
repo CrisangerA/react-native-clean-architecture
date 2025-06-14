@@ -58,6 +58,15 @@ export default function ComponentsScreen() {
             type="disabled"
             onPress={() => console.log('Disabled pressed (should not happen)')}
             disabled
+            icon="home"
+            iconPosition="right"
+          />
+          <View style={styles.spacer} />
+          <Button
+            title="Primary Button"
+            type="primary"
+            onPress={() => console.log('Primary pressed')}
+            icon="home"
           />
         </Section>
 
@@ -65,16 +74,29 @@ export default function ComponentsScreen() {
           <TextInput placeholder="Primary Input" type="primary" />
           <View style={styles.spacer} />
           <TextInput
+            label="Ingresa fecha"
+            placeholder="Primary Input"
+            iconLeft="search-web"
+          />
+          <View style={styles.spacer} />
+          <TextInput
             placeholder="Error Input"
             type="error"
             value="Texto con error"
+            iconRight="calendar-blank"
             error="Error: Este es un mensaje de error"
           />
           <View style={styles.spacer} />
           <TextInput
             placeholder="Input con valor"
             type="primary"
-            value="Valor inicial"
+            value="Valor Input con valor lorem ipsum loremp siadaois daois daios daosidoid "
+          />
+          <View style={styles.spacer} />
+          <TextInput
+            placeholder="Input con valor lorem ipsum loremp siadaois daois daios daosidoid "
+            iconRight="calendar-blank"
+            value="Valor Input con valor lorem ipsum loremp siadaois daois daios daosidoid "
           />
         </Section>
 

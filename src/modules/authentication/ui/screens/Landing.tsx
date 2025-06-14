@@ -21,6 +21,7 @@ export default function LandingScreen() {
           title="Sign In"
           onPress={() => navigate(PublicRoutes.SignIn)}
           type="secondary"
+          icon="login"
         />
       </Margin>
     </BaseLayout>
