@@ -1,7 +1,9 @@
-import { ContainerTextStyle } from './index';
-import { COLORS, APP_COLORS } from '../colors';
 import { Platform, ViewStyle } from 'react-native';
+
+import { ContainerTextStyle } from './index';
+import { COLORS } from '../colors';
 import { horizontalScale } from '@theme/responsive';
+import { BORDERS } from '@theme/borders';
 
 export type TextInputType = {
   primary: ContainerTextStyle;
@@ -10,10 +12,9 @@ export type TextInputType = {
 };
 
 const baseStyle: ViewStyle = {
-  backgroundColor: APP_COLORS.input.default,
   borderWidth: 1,
-  borderColor: APP_COLORS.input.border,
-  borderRadius: 8,
+  borderColor: COLORS.outline,
+  borderRadius: BORDERS.sm,
   paddingHorizontal: Platform.select({
     ios: horizontalScale(14),
     android: horizontalScale(10),
@@ -31,13 +32,15 @@ export const TEXT_INPUT_STYLES: Record<
   primary: {
     container: {
       ...baseStyle,
+      backgroundColor: COLORS.surface,
     },
-    text: {},
+    text: {
+      color: COLORS.onSurface,
+    },
   },
   error: {
     container: {
       ...baseStyle,
-
       borderColor: COLORS.error,
     },
     text: {
@@ -47,8 +50,10 @@ export const TEXT_INPUT_STYLES: Record<
   disabled: {
     container: {
       ...baseStyle,
-      backgroundColor: APP_COLORS.tabs,
+      backgroundColor: COLORS.outline,
     },
-    text: {},
+    text: {
+      color: COLORS.onSurface,
+    },
   },
 };

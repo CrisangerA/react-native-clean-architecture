@@ -1,9 +1,11 @@
 import { TextStyle, ViewStyle } from 'react-native';
 
 import { ContainerTextStyle } from './index';
-import { COLORS, APP_COLORS } from '../colors';
+import { COLORS } from '../colors';
 import { TEXT_STYLES } from './text';
-import { verticalScale } from '@theme/responsive';
+import { SPACING } from '@theme/spacing';
+import { BORDERS } from '@theme/borders';
+import { commonStyles } from '@theme/common';
 
 export type ButtonType = {
   primary: ContainerTextStyle;
@@ -13,14 +15,13 @@ export type ButtonType = {
 };
 
 const baseStyle: ViewStyle = {
-  backgroundColor: APP_COLORS.button.default,
-  paddingVertical: verticalScale(12),
-  borderRadius: 8,
+  paddingVertical: SPACING.sm,
+  ...commonStyles.card,
+  borderRadius: BORDERS.sm,
 };
 
 const baseTextStyle: TextStyle = {
   ...TEXT_STYLES.bodyMMedium,
-  color: APP_COLORS.button.text,
   textAlign: 'center',
 };
 
@@ -28,20 +29,21 @@ export const BUTTON_STYLES: Record<keyof ButtonType, ContainerTextStyle> = {
   primary: {
     container: {
       ...baseStyle,
+      backgroundColor: COLORS.primaryContainer,
     },
     text: {
       ...baseTextStyle,
+      color: COLORS.onPrimaryContainer,
     },
   },
   secondary: {
     container: {
       ...baseStyle,
-      backgroundColor: COLORS.secondary,
-      borderWidth: 1,
-      borderColor: COLORS.primary,
+      backgroundColor: COLORS.secondaryContainer,
     },
     text: {
       ...baseTextStyle,
+      color: COLORS.onSecondaryContainer,
     },
   },
   outline: {
@@ -49,7 +51,7 @@ export const BUTTON_STYLES: Record<keyof ButtonType, ContainerTextStyle> = {
       ...baseStyle,
       backgroundColor: COLORS.surface,
       borderWidth: 1,
-      borderColor: COLORS.primary,
+      borderColor: COLORS.outline,
     },
     text: {
       ...baseTextStyle,
@@ -59,10 +61,11 @@ export const BUTTON_STYLES: Record<keyof ButtonType, ContainerTextStyle> = {
   disabled: {
     container: {
       ...baseStyle,
-      backgroundColor: COLORS.disabled,
+      backgroundColor: COLORS.outline,
     },
     text: {
       ...baseTextStyle,
+      color: COLORS.surface,
     },
   },
 };

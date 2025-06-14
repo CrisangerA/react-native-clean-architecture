@@ -13,6 +13,7 @@ import ComponentsScreen from '@modules/user/ui/screens/Components';
 // Theme & Other
 import { screenWidth } from '@theme/responsive';
 import { PrivateRoutes, PrivateStackParamsList } from '../domain/model';
+import { COLORS } from '@theme/colors';
 
 const Tab = createBottomTabNavigator<PrivateStackParamsList>();
 export const useNavigationPrivate = () =>
@@ -56,6 +57,9 @@ export default function PrivateRoutesStack() {
       screenOptions={{
         headerShown: false,
         lazy: true,
+        tabBarStyle: {
+          backgroundColor: COLORS.background,
+        },
       }}
     >
       <Tab.Screen

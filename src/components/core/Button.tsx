@@ -24,11 +24,20 @@ export default function Button({
   title,
   text,
   type = 'primary',
+  isLoading,
+  disabled,
 }: ButtonProps) {
+  if (isLoading || disabled) {
+    type = 'disabled';
+  }
   const styles = BUTTON_STYLES[type];
 
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={onPress}
+      disabled={isLoading || disabled}
+    >
       <Text title={title} style={styles.text} {...text} />
     </TouchableOpacity>
   );

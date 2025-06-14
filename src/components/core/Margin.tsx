@@ -1,6 +1,6 @@
-import { horizontalScale, verticalScale } from '@theme/responsive';
+import { horizontalScale } from '@theme/responsive';
 import React, { PropsWithChildren } from 'react';
-import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
+import { View, StyleProp, ViewStyle } from 'react-native';
 
 interface MarginProps {
   top?: number;
@@ -17,11 +17,11 @@ export default function Margin(props: PropsWithChildren<MarginProps>) {
   const { children, top, bottom, left, right } = props;
 
   const marginStyle: StyleProp<ViewStyle> = [
-    top !== undefined && { marginTop: verticalScale(top) },
-    bottom !== undefined && { marginBottom: verticalScale(bottom) },
+    top !== undefined && { marginTop: horizontalScale(top) },
+    bottom !== undefined && { marginBottom: horizontalScale(bottom) },
     left !== undefined && { marginLeft: horizontalScale(left) },
     right !== undefined && { marginRight: horizontalScale(right) },
-    vertical !== undefined && { marginVertical: verticalScale(vertical) },
+    vertical !== undefined && { marginVertical: horizontalScale(vertical) },
     horizontal !== undefined && {
       marginHorizontal: horizontalScale(horizontal),
     },
@@ -29,14 +29,8 @@ export default function Margin(props: PropsWithChildren<MarginProps>) {
   ];
 
   if (children) {
-    return <View style={[styles.container, marginStyle]}>{children}</View>;
+    return <View style={marginStyle}>{children}</View>;
   }
 
-  return <View style={[styles.container, marginStyle]} />;
+  return <View style={marginStyle} />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    // Estilos base del contenedor si son necesarios
-  },
-});

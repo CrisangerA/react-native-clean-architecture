@@ -4,7 +4,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 // Theme
-import { APP_COLORS } from '@theme/colors';
+import { COLORS, commonStyles } from '@theme/index';
 
 const queryClient = new QueryClient();
 
@@ -13,8 +13,8 @@ export default function AppContainer({ children }: PropsWithChildren) {
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider>
         <StatusBar barStyle="default" />
-        <GestureHandlerRootView style={styles.root}>
-          <SafeAreaView style={styles.container}>{children}</SafeAreaView>
+        <GestureHandlerRootView style={commonStyles.flex}>
+          <SafeAreaView style={styles.safeArea}>{children}</SafeAreaView>
         </GestureHandlerRootView>
       </SafeAreaProvider>
     </QueryClientProvider>
@@ -22,11 +22,8 @@ export default function AppContainer({ children }: PropsWithChildren) {
 }
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: APP_COLORS.button.default,
-  },
-  container: {
-    flex: 1,
+  safeArea: {
+    ...commonStyles.flex,
+    backgroundColor: COLORS.background,
   },
 });

@@ -2,49 +2,34 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import React from 'react';
 import { Text, Button, TextInput, Margin } from '@components/core'; // Asegúrate que la ruta sea correcta
 import { COLORS } from '@theme/colors';
-import { commonStyles } from '@theme/components';
+import { commonStyles } from '@theme/index';
+import { BaseLayout, Loading } from '@components/layout';
 
 export default function ComponentsScreen() {
   return (
-    <View>
+    <BaseLayout style={styles.root}>
       <Text font="h1Bold" style={styles.title}>
         Componentes Base
       </Text>
       <ScrollView style={commonStyles.paddingHorizontal}>
-        <Section title="Textos Titulos (Display)">
-          <Text font="displayRegular">Display Regular</Text>
-          <Text font="displayMedium">Display Medium</Text>
-          <Text font="displayBold">Display Bold</Text>
-        </Section>
-
-        <Section title="Textos Titulos (Headline)">
-          <Text font="h1Regular">H1 Regular (Accent)</Text>
-          <Text font="h1Medium">H1 Medium (Accent)</Text>
-          <Text font="h1Bold">H1 Bold (Accent)</Text>
-
-          <Text font="h2Regular">H2 Regular</Text>
-          <Text font="h2Medium">H2 Medium</Text>
-          <Text font="h2Bold">H2 Bold</Text>
-
-          <Text font="h3Regular">H3 Regular (Error)</Text>
-          <Text font="h3Medium">H3 Medium (Error)</Text>
-          <Text font="h3Bold">H3 Bold (Error)</Text>
-        </Section>
-
         <Section title="Textos (Body)">
           <Text font="bodyLRegular">Body Large Regular</Text>
-          <Text font="bodyMMedium">Body Medium (Secondary Text)</Text>
-          <Text font="bodySBold">Body Small Bold</Text>
+          <Text font="bodyMMedium" color="error">
+            Body Medium (Secondary Text)
+          </Text>
+          <Text font="bodySBold" color="outline">
+            Body Small Bold
+          </Text>
         </Section>
 
         <Section title="Textos (caption)">
-          <Text font="captionRegular" underline>
+          <Text font="captionRegular" color="tertiary">
             Caption Text (Underline)
           </Text>
           <Text font="captionMedium" underline>
             Caption Text (Medium)
           </Text>
-          <Text font="captionBold" underline>
+          <Text font="captionBold" underline color="primaryContainer">
             Caption Text (Bold)
           </Text>
         </Section>
@@ -93,9 +78,14 @@ export default function ComponentsScreen() {
           />
         </Section>
 
+        <Section title="Indicators">
+          <Loading />
+          <Loading label="Custom text..." />
+        </Section>
+
         <Margin top={100} />
       </ScrollView>
-    </View>
+    </BaseLayout>
   );
 }
 
@@ -106,32 +96,27 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({ title, children }) => (
   <View style={styles.card}>
-    <Text font="bodyLBold" color="primary">
-      {title}
-    </Text>
+    <Text font="bodyLBold">{title}</Text>
     <View style={styles.spacer} />
     {children}
   </View>
 );
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    padding: 0,
+  },
   title: {
     marginBottom: 16,
     textAlign: 'center',
   },
   card: {
+    ...commonStyles.card,
     marginBottom: 24,
     padding: 16,
     backgroundColor: COLORS.surface,
     borderRadius: 8,
-    shadowColor: COLORS.grey500,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 3, // for Android shadow
   },
   spacer: {
     height: 16,

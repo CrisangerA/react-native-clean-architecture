@@ -1,7 +1,10 @@
 import { horizontalScale, verticalScale } from '@theme/responsive';
 import { StyleSheet } from 'react-native';
+import { COLORS } from './colors';
+import { SPACING } from './spacing';
 
 export const commonStyles = StyleSheet.create({
+  flex: { flex: 1 },
   centerContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -34,5 +37,16 @@ export const commonStyles = StyleSheet.create({
   },
   marginVertical: {
     marginVertical: verticalScale(16),
+  },
+  // Card styles
+  card: {
+    backgroundColor: COLORS.surface,
+    borderRadius: SPACING.md,
+    padding: SPACING.md,
+    shadowColor: COLORS.outline,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 1,
+    shadowRadius: 8,
+    elevation: 6,
   },
 });

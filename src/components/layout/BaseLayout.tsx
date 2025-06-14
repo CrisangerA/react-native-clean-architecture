@@ -1,7 +1,8 @@
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import React, { PropsWithChildren } from 'react';
 
-import { horizontalScale } from '@theme/responsive';
+import { SPACING } from '@theme/spacing';
+import { COLORS } from '@theme/colors';
 
 interface BaseLayoutProps {
   style?: ViewStyle;
@@ -17,6 +18,7 @@ export default function BaseLayout({
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    padding: horizontalScale(20),
+    padding: SPACING.md,
+    backgroundColor: COLORS.background,
   },
 });

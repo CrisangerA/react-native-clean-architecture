@@ -37,8 +37,9 @@ FirebaseApp.configure()
 
 ## 2. GCloud
 
-- 2.1 Agregar una nueva credencial de tipo OAuth para Android y iOS
-- 2.2 Copiar las credenciales en el archivo src/config/secure-store.json
+- 2.1 Agregar una nueva credencial de tipo OAuth para Android, iOS y Web
+- 2.2 Configurar el clienteId en firebase
+- 2.3 Copiar las credenciales en el archivo src/config/secure-store.json
 
 ## 3. Run Project
 

@@ -1,19 +1,26 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 // Components
 import { Text } from '@components/core';
+import { SPACING } from '@theme/spacing';
 
-export default function Loading() {
+interface LoadingProps {
+  label?: string;
+}
+export default function Loading({ label }: LoadingProps) {
   return (
     <View style={styles.root}>
-      <Text font="bodyLMedium">Loading</Text>
+      <ActivityIndicator />
+      <Text font="bodyLMedium">{label || ' Loading'}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   root: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    gap: SPACING.sm,
   },
 });
