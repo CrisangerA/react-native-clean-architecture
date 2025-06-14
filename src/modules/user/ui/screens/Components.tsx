@@ -16,58 +16,53 @@ import { DatePicker } from '@components/core';
 export default function ComponentsScreen() {
   return (
     <BaseLayout style={styles.root}>
-      <Text font="h1Bold" style={styles.title}>
-        Componentes Base
-      </Text>
       <ScrollView style={commonStyles.paddingHorizontal}>
-        <Section title="Botones (Button)">
-          <Button
-            title="Primary Button"
-            type="primary"
-            onPress={() => console.log('Primary pressed')}
-          />
-          <View style={styles.spacer} />
+        <Margin top={24} />
+        <Section title="Botones">
+          <Button title="Primary Button" onPress={() => {}} />
+          <Margin top={20} />
           <Button
             title="Secondary Button"
             type="secondary"
-            onPress={() => console.log('Secondary pressed')}
+            onPress={() => {}}
           />
-          <View style={styles.spacer} />
+          <Margin top={20} />
           <Button
             title="Outline Button"
             type="outline"
-            onPress={() => console.log('Outline pressed')}
+            onPress={() => {}}
+            icon="home"
+            iconPosition="left"
           />
-          <View style={styles.spacer} />
+          <Margin top={20} />
           <Button
             title="Disabled Button"
             type="disabled"
-            onPress={() => console.log('Disabled pressed (should not happen)')}
+            onPress={() => {}}
             disabled
             icon="home"
             iconPosition="right"
           />
         </Section>
 
-        <Section title="Entradas">
-          <Text title="Texto plano:" font="bodyMMedium" />
-          <Margin top={12} />
-          <TextInput label="TextInput primary" placeholder="Escribe algo" />
+        <Section title="Entrada de texto">
+          <TextInput label="Nombre completo" placeholder="Escribe algo" />
           <Margin top={16} />
           <TextInput
-            placeholder="Escribe algo"
-            type="error"
-            label="TextInput con error"
-            value="Este text-input tiene la variante error"
-            error="Error: Este es un mensaje de error"
-          />
-          <Margin top={16} />
-          <TextInput
-            label="TextInput deshabilitado"
+            label="Texto deshabilitado"
             placeholder="Escribe algo"
             value="Valor Input con valor lorem ipsum loremp siadaois daois daios daosidoid "
             editable={false}
             iconRight="home"
+          />
+          <Margin top={16} />
+          <TextInput
+            placeholder="Segundo nombre"
+            type="error"
+            label="Texto con error"
+            value="Este text-input tiene la variante error"
+            error="Error: Este es un mensaje de error"
+            iconLeft="account"
           />
           <Margin top={24} />
           <Text title="Selectores:" font="bodyMMedium" />
@@ -83,6 +78,15 @@ export default function ComponentsScreen() {
               { label: 'Miercoles', value: '3' },
               { label: 'Jueves', value: '4' },
             ]}
+          />{' '}
+          <Margin top={12} />
+          <Select
+            pointerEvents="none"
+            label="Ciudad"
+            labelModal="Seleccionar ciudad"
+            placeholder="Selecciona una ciudad"
+            options={[]}
+            editable={false}
           />
           <Margin top={24} />
           <Text title="Fechas:" font="bodyMMedium" />
@@ -97,7 +101,6 @@ export default function ComponentsScreen() {
           <Margin top={16} />
           <DatePicker
             mode="date"
-            date={new Date()}
             setDate={() => {}}
             label="Fecha"
             placeholder="Selecciona una fecha"
@@ -105,7 +108,6 @@ export default function ComponentsScreen() {
           <Margin top={16} />
           <DatePicker
             mode="datetime"
-            date={new Date()}
             setDate={() => {}}
             label="Fecha y hora"
             editable={false}
@@ -152,7 +154,7 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({ title, children }) => (
   <View style={styles.card}>
-    <Text font="bodyLBold">{title}</Text>
+    <Text font="h3Medium">{title}</Text>
     <View style={styles.spacer} />
     {children}
   </View>

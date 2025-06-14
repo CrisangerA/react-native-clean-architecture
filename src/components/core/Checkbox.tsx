@@ -5,12 +5,14 @@ import Icon from './Icon';
 import Text from './Text';
 import { commonStyles } from '@theme/common';
 import Margin from './Margin';
+import { SPACING } from '@theme/spacing';
 
-interface CheckboxProps {
+export interface CheckboxProps {
   title: string;
-  selected: boolean;
-  onChange: (selected: boolean) => void;
+  selected?: boolean;
+  onChange?: (selected: boolean) => void;
   color?: keyof Color;
+  error?: string;
 }
 
 export default function Checkbox({
@@ -18,22 +20,26 @@ export default function Checkbox({
   selected,
   onChange,
   color = 'primary',
+  error,
 }: CheckboxProps) {
-  const handleChange = React.useCallback((value: boolean) => {
-    onChange(value);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
-    <View style={commonStyles.row}>
-      <TouchableOpacity onPress={() => handleChange(!selected)}>
-        <Icon
-          name={selected ? 'checkbox-outline' : 'checkbox-blank-outline'}
-          color={color}
-        />
-      </TouchableOpacity>
-      <Margin right={4} />
-      <Text title={title} color={color} />
-    </View>
+    <>
+      <View style={commonStyles.row}>
+        <TouchableOpacity onPress={() => onChange?.(!selected)}>
+          <Icon
+            name={selected ? 'checkbox-outline' : 'checkbox-blank-outline'}
+            size={SPACING.lg}
+            color={color}
+          />
+        </TouchableOpacity>
+        <Margin right={4} />
+        <Text title={title} color={color} />
+      </View>
+      {error && (
+        <Margin top={4}>
+          <Text title={error} font="overlineRegular" color="error" />
+        </Margin>
+      )}
+    </>
   );
 }

@@ -35,15 +35,15 @@ export type SemanticColor = {
 export type Color = BaseColor & SemanticColor;
 
 const lightTheme: Color = {
-  primary: '#316A41',
+  primary: '#4c662b',
   onPrimary: '#FFFFFF',
-  primaryContainer: '#B4F1BE',
+  primaryContainer: '#cdeda3',
   onPrimaryContainer: '#17512B',
-  secondary: '#326941',
+  secondary: '#586249',
   onSecondary: '#FFFFFF',
-  secondaryContainer: '#B4F1BE',
+  secondaryContainer: '#dce7c8',
   onSecondaryContainer: '#17512B',
-  tertiary: '#006877',
+  tertiary: '#386663',
   onTertiary: '#FFFFFF',
   tertiaryContainer: '#A2EEFF',
   onTertiaryContainer: '#004E5A',

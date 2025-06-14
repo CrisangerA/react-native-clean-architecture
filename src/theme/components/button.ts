@@ -55,6 +55,7 @@ export const BUTTON_STYLES: Record<keyof ButtonType, ContainerTextStyle> = {
       backgroundColor: COLORS.surface,
       borderWidth: 1,
       borderColor: COLORS.outline,
+      shadowColor: 'transparent',
     },
     text: {
       ...baseTextStyle,
@@ -64,11 +65,12 @@ export const BUTTON_STYLES: Record<keyof ButtonType, ContainerTextStyle> = {
   disabled: {
     container: {
       ...baseStyle,
-      backgroundColor: COLORS.outline,
+      backgroundColor: COLORS.surfaceVariant,
+      shadowColor: 'transparent',
     },
     text: {
       ...baseTextStyle,
-      color: COLORS.surface,
+      color: COLORS.outline,
     },
   },
 };

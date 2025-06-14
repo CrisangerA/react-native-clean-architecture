@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
 
 import { Text } from './index';
-import { BUTTON_STYLES, ButtonType } from '@theme/index';
+import { BUTTON_STYLES, ButtonType, Color } from '@theme/index';
 import Icon from './Icon';
 
 interface ButtonProps extends TouchableOpacityProps {
@@ -45,13 +45,13 @@ export default function Button({
     >
       {icon && iconPosition === 'left' && (
         <View>
-          <Icon name={icon} color={styles.text.color as string} />
+          <Icon name={icon} color={styles.text.color as keyof Color} />
         </View>
       )}
       <Text title={title} style={styles.text} />
       {icon && iconPosition === 'right' && (
         <View>
-          <Icon name={icon} color={styles.text.color as string} />
+          <Icon name={icon} color={styles.text.color as keyof Color} />
         </View>
       )}
     </TouchableOpacity>

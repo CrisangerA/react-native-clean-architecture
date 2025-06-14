@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 // Components
 import { Button, Item, Margin } from '@components/core';
-import { TextInput, DatePicker, Select } from '@components/form';
+import { TextInput, DatePicker, Select, Checkbox } from '@components/form';
 // Modules
 import { UserForm } from '@modules/user/domain/model';
 import { regExpAlphabetic, regExpEmail } from '@config/regExp';
@@ -31,6 +31,9 @@ export default function FormExample() {
           label: Yup.string().required(),
           value: Yup.string().required('La ciudad es requerida'),
         }),
+        terms: Yup.boolean()
+          .oneOf([true], 'Debe aceptar los terminos')
+          .required(),
       }),
     ),
   });
@@ -52,6 +55,7 @@ export default function FormExample() {
         control={control}
         label="Correo"
         placeholder="Ingresa tu correo electronico"
+        keyboardType="email-address"
       />
       <Margin spacing="sm" />
       <DatePicker
@@ -68,6 +72,12 @@ export default function FormExample() {
         label="Ciudad"
         placeholder="Selecciona ciudad de nacimiento"
         options={citiesDataSource}
+      />
+      <Margin spacing="sm" />
+      <Checkbox
+        name="terms"
+        control={control}
+        title="Acepto terminos y condiciones"
       />
       <Margin spacing="xxl" />
       <Button title="Enviar" onPress={handleSubmit(onSubmit)} />

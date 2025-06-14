@@ -61,11 +61,11 @@ export const TEXT_INPUT_STYLES: Record<
   disabled: {
     container: {
       ...baseStyle,
-      backgroundColor: COLORS.outline,
+      backgroundColor: COLORS.surfaceVariant,
     },
     text: {
       ...baseTextStyle,
-      color: COLORS.onSurface,
+      color: COLORS.outline,
     },
   },
 };

@@ -44,8 +44,8 @@ export const commonStyles = StyleSheet.create({
     padding: SPACING.md,
     shadowColor: COLORS.outline,
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 1,
-    shadowRadius: 8,
-    elevation: 6,
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    elevation: 8,
   },
 });

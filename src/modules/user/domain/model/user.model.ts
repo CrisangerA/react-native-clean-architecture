@@ -6,6 +6,7 @@ export interface User {
   name: string;
   date: Date;
   city: Item;
+  terms: boolean;
 }
 
 export type UserForm = Omit<User, 'uid'>;
