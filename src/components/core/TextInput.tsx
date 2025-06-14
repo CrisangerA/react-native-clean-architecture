@@ -5,14 +5,14 @@ import {
   TextInputProps as RNTextInputProps,
   StyleSheet,
 } from 'react-native';
-import { Icon, Margin, Text, TextProps } from './index';
+import { Icon, Margin, Text } from './index';
 import { TEXT_INPUT_STYLES, TextInputType } from '@theme/components';
 import { SPACING } from '@theme/spacing';
+import { Color } from '@theme/colors';
 
 export interface TextInputProps extends RNTextInputProps {
   label?: string;
   error?: string;
-  labelProps?: TextProps;
   type?: keyof TextInputType;
   // icon
   iconLeft?: string;
@@ -32,23 +32,26 @@ export interface TextInputProps extends RNTextInputProps {
  */
 export default function TextInput({
   label,
-  labelProps,
   error,
   type = 'primary',
   iconLeft,
   iconRight,
-  ...props
+  ...rest
 }: TextInputProps) {
-  if (props.editable === false) {
+  if (rest.editable === false) {
     type = 'disabled';
   }
   const styles = TEXT_INPUT_STYLES[type];
 
   return (
-    <View>
+    <View pointerEvents={rest.pointerEvents}>
       {label && (
         <Margin bottom={4}>
-          <Text title={label} font="bodySRegular" {...labelProps} />
+          <Text
+            title={label}
+            font="bodySRegular"
+            color={styles.text.color as keyof Color}
+          />
         </Margin>
       )}
       <View style={styles.container}>
@@ -57,7 +60,7 @@ export default function TextInput({
             <Icon
               name={iconLeft}
               size={SPACING.lg}
-              color={styles.text.color as string}
+              color={styles.text.color as keyof Color}
             />
           </View>
         )}
@@ -67,14 +70,14 @@ export default function TextInput({
             iconLeft && localStyles.textIconLeft,
             iconRight && localStyles.textIconRight,
           ]}
-          {...props}
+          {...rest}
         />
         {iconRight && (
           <View style={localStyles.iconRight}>
             <Icon
               name={iconRight}
               size={SPACING.lg}
-              color={styles.text.color as string}
+              color={styles.text.color as keyof Color}
             />
           </View>
         )}

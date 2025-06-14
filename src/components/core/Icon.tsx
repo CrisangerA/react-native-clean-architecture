@@ -1,17 +1,20 @@
 import React from 'react';
 import RNVIcon from '@react-native-vector-icons/material-design-icons';
 
-import { SPACING, COLORS } from '@theme/index';
+import { SPACING, Color, getColor } from '@theme/index';
 
 interface IconProps {
   name: string;
   size?: number;
-  color?: string;
+  color?: keyof Color;
 }
+
 export default function Icon({
   name,
   size = SPACING.md,
-  color = COLORS.primary,
+  color = 'primary',
 }: IconProps) {
-  return <RNVIcon name={name as never} size={size} color={color} />;
+  const finalColor = getColor(color);
+
+  return <RNVIcon name={name as never} size={size} color={finalColor} />;
 }

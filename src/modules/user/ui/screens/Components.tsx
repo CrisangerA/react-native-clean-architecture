@@ -1,9 +1,17 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
 import React from 'react';
-import { Text, Button, TextInput, Margin, Select } from '@components/core'; // Asegúrate que la ruta sea correcta
+import {
+  Text,
+  Button,
+  TextInput,
+  Margin,
+  Select,
+  Checkbox,
+} from '@components/core'; // Asegúrate que la ruta sea correcta
 import { COLORS } from '@theme/colors';
 import { commonStyles } from '@theme/index';
 import { BaseLayout, Loading } from '@components/layout';
+import { DatePicker } from '@components/core';
 
 export default function ComponentsScreen() {
   return (
@@ -12,28 +20,6 @@ export default function ComponentsScreen() {
         Componentes Base
       </Text>
       <ScrollView style={commonStyles.paddingHorizontal}>
-        <Section title="Textos (Body)">
-          <Text font="bodyLRegular">Body Large Regular</Text>
-          <Text font="bodyMMedium" color="error">
-            Body Medium (Secondary Text)
-          </Text>
-          <Text font="bodySBold" color="outline">
-            Body Small Bold
-          </Text>
-        </Section>
-
-        <Section title="Textos (caption)">
-          <Text font="captionRegular" color="tertiary">
-            Caption Text (Underline)
-          </Text>
-          <Text font="captionMedium" underline>
-            Caption Text (Medium)
-          </Text>
-          <Text font="captionBold" underline color="primaryContainer">
-            Caption Text (Bold)
-          </Text>
-        </Section>
-
         <Section title="Botones (Button)">
           <Button
             title="Primary Button"
@@ -61,44 +47,69 @@ export default function ComponentsScreen() {
             icon="home"
             iconPosition="right"
           />
-          <View style={styles.spacer} />
-          <Button
-            title="Primary Button"
-            type="primary"
-            onPress={() => console.log('Primary pressed')}
-            icon="home"
-          />
         </Section>
 
-        <Section title="Entradas de Texto (TextInput)">
-          <TextInput placeholder="Primary Input" type="primary" />
-          <View style={styles.spacer} />
+        <Section title="Entradas">
+          <Text title="Texto plano:" font="bodyMMedium" />
+          <Margin top={12} />
+          <TextInput label="TextInput primary" placeholder="Escribe algo" />
+          <Margin top={16} />
           <TextInput
-            label="Ingresa fecha"
-            placeholder="Primary Input"
-            iconLeft="search-web"
-          />
-          <View style={styles.spacer} />
-          <TextInput
-            placeholder="Error Input"
+            placeholder="Escribe algo"
             type="error"
-            value="Texto con error"
-            iconRight="calendar-blank"
+            label="TextInput con error"
+            value="Este text-input tiene la variante error"
             error="Error: Este es un mensaje de error"
           />
-          <View style={styles.spacer} />
+          <Margin top={16} />
           <TextInput
-            placeholder="Input con valor disabled"
-            type="primary"
-            value=""
-            label="Deshabilitado"
-            editable={false}
-          />
-          <View style={styles.spacer} />
-          <TextInput
-            placeholder="Input con valor lorem ipsum loremp siadaois daois daios daosidoid "
-            iconRight="calendar-blank"
+            label="TextInput deshabilitado"
+            placeholder="Escribe algo"
             value="Valor Input con valor lorem ipsum loremp siadaois daois daios daosidoid "
+            editable={false}
+            iconRight="home"
+          />
+          <Margin top={24} />
+          <Text title="Selectores:" font="bodyMMedium" />
+          <Margin top={12} />
+          <Select
+            pointerEvents="none"
+            label="Ciudad"
+            labelModal="Seleccionar ciudad"
+            placeholder="Selecciona una ciudad"
+            options={[
+              { label: 'Lunes', value: '1' },
+              { label: 'Martes', value: '2' },
+              { label: 'Miercoles', value: '3' },
+              { label: 'Jueves', value: '4' },
+            ]}
+          />
+          <Margin top={24} />
+          <Text title="Fechas:" font="bodyMMedium" />
+          <Margin top={12} />
+          <DatePicker
+            mode="time"
+            date={new Date()}
+            setDate={() => {}}
+            label="Hora"
+            placeholder="Selecciona una hora"
+          />
+          <Margin top={16} />
+          <DatePicker
+            mode="date"
+            date={new Date()}
+            setDate={() => {}}
+            label="Fecha"
+            placeholder="Selecciona una fecha"
+          />
+          <Margin top={16} />
+          <DatePicker
+            mode="datetime"
+            date={new Date()}
+            setDate={() => {}}
+            label="Fecha y hora"
+            editable={false}
+            placeholder="Selecciona una fecha y hora"
           />
         </Section>
 
@@ -107,37 +118,24 @@ export default function ComponentsScreen() {
           <Loading label="Custom text..." />
         </Section>
 
-        <Section title="Select input">
-          <Select
-            label="Ciudad"
-            placeholder="hola mundo"
-            options={[
-              { label: 'Lunes', value: '1' },
-              { label: 'Martes', value: '2' },
-              { label: 'Miercoles', value: '3' },
-              { label: 'Jueves', value: '4' },
-            ]}
+        <Section title="Checkboxs">
+          <Checkbox selected onChange={() => {}} title="Checkbox primary" />
+          <Checkbox
+            selected={false}
+            onChange={() => {}}
+            title="Checkbox primary"
           />
-          <Select
-            label="Dia"
-            options={[
-              { label: 'Lunes', value: '1' },
-              { label: 'Martes', value: '2' },
-              { label: 'Miercoles', value: '3' },
-              { label: 'Jueves', value: '4' },
-            ]}
-            disabled
+          <Checkbox
+            selected
+            onChange={() => {}}
+            color="secondary"
+            title="Checkbox primary"
           />
-          <Select
-            label="Opciones"
-            labelModal="Selecciona una opcion"
-            options={[
-              { label: 'Lunes', value: '1' },
-              { label: 'Martes', value: '2' },
-              { label: 'Miercoles', value: '3' },
-              { label: 'Jueves', value: '4' },
-            ]}
-            type="error"
+          <Checkbox
+            selected={false}
+            onChange={() => {}}
+            color="tertiary"
+            title="Checkbox primary"
           />
         </Section>
 

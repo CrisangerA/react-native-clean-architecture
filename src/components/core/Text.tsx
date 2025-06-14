@@ -4,7 +4,7 @@ import {
   TextProps as RNTextProps,
 } from 'react-native';
 import { PropsWithChildren } from 'react';
-import { TEXT_STYLES, FontStyle, Color, COLORS } from '@theme/index';
+import { TEXT_STYLES, FontStyle, Color, getColor } from '@theme/index';
 
 export interface TextProps extends RNTextProps {
   title?: string;
@@ -26,8 +26,10 @@ export default function Text({
   style,
   ...props
 }: PropsWithChildren<TextProps>) {
+  const finalColor = getColor(color);
+
   const _textStyles: TextStyle = {
-    color: COLORS[color],
+    color: finalColor,
     textAlign: align,
     ...(textTransform && { textTransform }),
     ...(underline && { textDecorationLine: 'underline' }),

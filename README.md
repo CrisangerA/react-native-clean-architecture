@@ -4,10 +4,23 @@
 
 ## Get started
 
-Install libs
+1. Install libs
 
 ```bash
 bun install
+```
+
+2. instalar iconos en iOS
+   Para los iconos se utiliza [@react-native-vector-icons/material-design-icons](https://github.com/oblador/react-native-vector-icons?tab=readme-ov-file#setup) y requiere esta configuracion en ios [Update Info.plist](https://github.com/oblador/react-native-vector-icons/blob/master/docs/SETUP-REACT-NATIVE.md)
+
+```bash
+npx rnvi-update-plist package.json ios/[Your-App-Name]/Info.plist
+```
+
+3. instalar dependencias iOS
+
+```bash
+bun pod-install
 ```
 
 ## 1. Firebase
@@ -40,10 +53,6 @@ FirebaseApp.configure()
 - 2.1 Agregar una nueva credencial de tipo OAuth para Android, iOS y Web
 - 2.2 Configurar el clienteId en firebase
 - 2.3 Copiar las credenciales en el archivo src/config/secure-store.json
-
-## 3. Icon fonts (iOS)
-
-Para los iconos se utiliza [@react-native-vector-icons/material-design-icons](https://github.com/oblador/react-native-vector-icons?tab=readme-ov-file#setup) y requiere esta configuracion en ios [Update Info.plist](https://github.com/oblador/react-native-vector-icons/blob/master/docs/SETUP-REACT-NATIVE.md)
 
 ## 4. Run Project
 

@@ -92,3 +92,6 @@ const darkTheme: Color = {
 
 export const COLORS =
   Appearance.getColorScheme() === 'dark' ? darkTheme : lightTheme;
+
+export const getColor = (color: keyof Color | string) =>
+  Object.keys(COLORS).includes(color) ? COLORS[color as keyof Color] : color;

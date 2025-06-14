@@ -31,6 +31,7 @@ const baseStyle: ViewStyle = {
 const baseTextStyle: TextStyle = {
   ...TEXT_STYLES.bodySRegular,
   color: COLORS.primary,
+  flex: 1,
 };
 
 export const TEXT_INPUT_STYLES: Record<
