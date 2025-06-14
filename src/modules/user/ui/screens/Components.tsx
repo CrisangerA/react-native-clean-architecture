@@ -1,4 +1,3 @@
-import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import {
   Text,
@@ -7,17 +6,16 @@ import {
   Margin,
   Select,
   Checkbox,
-} from '@components/core'; // Asegúrate que la ruta sea correcta
-import { COLORS } from '@theme/colors';
-import { commonStyles } from '@theme/index';
+  Card,
+  DatePicker,
+} from '@components/core';
 import { BaseLayout, Loading } from '@components/layout';
-import { DatePicker } from '@components/core';
 
 export default function ComponentsScreen() {
   return (
     <BaseLayout scrollable>
       <Margin top={24} />
-      <Section title="Botones">
+      <Card title="Botones">
         <Button title="Primary Button" onPress={() => {}} />
         <Margin top={20} />
         <Button title="Secondary Button" type="secondary" onPress={() => {}} />
@@ -38,8 +36,9 @@ export default function ComponentsScreen() {
           icon="home"
           iconPosition="right"
         />
-      </Section>
-      <Section title="Floating Action Button">
+      </Card>
+      <Margin top={24} />
+      <Card title="Floating Action Button">
         <Button title="Primary Button" onPress={() => {}} />
         <Margin top={20} />
         <Button title="Secondary Button" type="secondary" onPress={() => {}} />
@@ -60,8 +59,9 @@ export default function ComponentsScreen() {
           icon="home"
           iconPosition="right"
         />
-      </Section>
-      <Section title="Entrada de texto">
+      </Card>
+      <Margin top={24} />
+      <Card title="Entrada de texto">
         <TextInput label="Nombre completo" placeholder="Escribe algo" />
         <Margin top={16} />
         <TextInput
@@ -129,14 +129,14 @@ export default function ComponentsScreen() {
           editable={false}
           placeholder="Selecciona una fecha y hora"
         />
-      </Section>
-
-      <Section title="Indicators">
+      </Card>
+      <Margin top={24} />
+      <Card title="Indicators">
         <Loading />
         <Loading label="Custom text..." />
-      </Section>
-
-      <Section title="Checkboxs">
+      </Card>
+      <Margin top={24} />
+      <Card title="Checkboxs">
         <Checkbox selected onChange={() => {}} title="Checkbox primary" />
         <Checkbox
           selected={false}
@@ -155,39 +155,8 @@ export default function ComponentsScreen() {
           color="tertiary"
           title="Checkbox primary"
         />
-      </Section>
-
+      </Card>
       <Margin top={100} />
     </BaseLayout>
   );
 }
-
-interface SectionProps {
-  title: string;
-  children: React.ReactNode;
-}
-
-const Section: React.FC<SectionProps> = ({ title, children }) => (
-  <View style={styles.card}>
-    <Text font="h3Medium">{title}</Text>
-    <View style={styles.spacer} />
-    {children}
-  </View>
-);
-
-const styles = StyleSheet.create({
-  title: {
-    marginBottom: 16,
-    textAlign: 'center',
-  },
-  card: {
-    ...commonStyles.card,
-    marginBottom: 24,
-    padding: 16,
-    backgroundColor: COLORS.surface,
-    borderRadius: 8,
-  },
-  spacer: {
-    height: 16,
-  },
-});
