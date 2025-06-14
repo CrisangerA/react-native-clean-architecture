@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
 import React from 'react';
-import { Text, Button, TextInput, Margin } from '@components/core'; // Asegúrate que la ruta sea correcta
+import { Text, Button, TextInput, Margin, Select } from '@components/core'; // Asegúrate que la ruta sea correcta
 import { COLORS } from '@theme/colors';
 import { commonStyles } from '@theme/index';
 import { BaseLayout, Loading } from '@components/layout';
@@ -88,9 +88,11 @@ export default function ComponentsScreen() {
           />
           <View style={styles.spacer} />
           <TextInput
-            placeholder="Input con valor"
+            placeholder="Input con valor disabled"
             type="primary"
-            value="Valor Input con valor lorem ipsum loremp siadaois daois daios daosidoid "
+            value=""
+            label="Deshabilitado"
+            editable={false}
           />
           <View style={styles.spacer} />
           <TextInput
@@ -103,6 +105,40 @@ export default function ComponentsScreen() {
         <Section title="Indicators">
           <Loading />
           <Loading label="Custom text..." />
+        </Section>
+
+        <Section title="Select input">
+          <Select
+            label="Ciudad"
+            placeholder="hola mundo"
+            options={[
+              { label: 'Lunes', value: '1' },
+              { label: 'Martes', value: '2' },
+              { label: 'Miercoles', value: '3' },
+              { label: 'Jueves', value: '4' },
+            ]}
+          />
+          <Select
+            label="Dia"
+            options={[
+              { label: 'Lunes', value: '1' },
+              { label: 'Martes', value: '2' },
+              { label: 'Miercoles', value: '3' },
+              { label: 'Jueves', value: '4' },
+            ]}
+            disabled
+          />
+          <Select
+            label="Opciones"
+            labelModal="Selecciona una opcion"
+            options={[
+              { label: 'Lunes', value: '1' },
+              { label: 'Martes', value: '2' },
+              { label: 'Miercoles', value: '3' },
+              { label: 'Jueves', value: '4' },
+            ]}
+            type="error"
+          />
         </Section>
 
         <Margin top={100} />

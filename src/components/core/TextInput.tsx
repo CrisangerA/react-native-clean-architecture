@@ -9,7 +9,7 @@ import { Icon, Margin, Text, TextProps } from './index';
 import { TEXT_INPUT_STYLES, TextInputType } from '@theme/components';
 import { SPACING } from '@theme/spacing';
 
-interface TextInputProps extends RNTextInputProps {
+export interface TextInputProps extends RNTextInputProps {
   label?: string;
   error?: string;
   labelProps?: TextProps;
@@ -39,6 +39,9 @@ export default function TextInput({
   iconRight,
   ...props
 }: TextInputProps) {
+  if (props.editable === false) {
+    type = 'disabled';
+  }
   const styles = TEXT_INPUT_STYLES[type];
 
   return (
