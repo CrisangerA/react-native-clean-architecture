@@ -30,66 +30,68 @@ export interface TextInputProps extends RNTextInputProps {
  * container and utilizes styles defined in the `TEXT_INPUT_STYLES` based on the
  * specified type.
  */
-export default function TextInput({
-  label,
-  error,
-  type = 'primary',
-  iconLeft,
-  iconRight,
-  ...rest
-}: TextInputProps) {
-  if (rest.editable === false) {
-    type = 'disabled';
-  }
-  const styles = TEXT_INPUT_STYLES[type];
+const TextInput = React.forwardRef<RNTextInput, TextInputProps>(
+  ({ label, error, type = 'primary', iconLeft, iconRight, ...rest }, ref) => {
+    if (rest.editable === false) {
+      type = 'disabled';
+    }
+    if (error) {
+      type = 'error';
+    }
 
-  return (
-    <View pointerEvents={rest.pointerEvents}>
-      {label && (
-        <Margin bottom={4}>
-          <Text
-            title={label}
-            font="bodySRegular"
-            color={styles.text.color as keyof Color}
-          />
-        </Margin>
-      )}
-      <View style={styles.container}>
-        {iconLeft && (
-          <View>
-            <Icon
-              name={iconLeft}
-              size={SPACING.lg}
+    const styles = TEXT_INPUT_STYLES[type];
+
+    return (
+      <View pointerEvents={rest.pointerEvents}>
+        {label && (
+          <Margin bottom={4}>
+            <Text
+              title={label}
+              font="bodySRegular"
               color={styles.text.color as keyof Color}
             />
-          </View>
+          </Margin>
         )}
-        <RNTextInput
-          style={[
-            styles.text,
-            iconLeft && localStyles.textIconLeft,
-            iconRight && localStyles.textIconRight,
-          ]}
-          {...rest}
-        />
-        {iconRight && (
-          <View style={localStyles.iconRight}>
-            <Icon
-              name={iconRight}
-              size={SPACING.lg}
-              color={styles.text.color as keyof Color}
-            />
-          </View>
+        <View style={styles.container}>
+          {iconLeft && (
+            <View>
+              <Icon
+                name={iconLeft}
+                size={SPACING.lg}
+                color={styles.text.color as keyof Color}
+              />
+            </View>
+          )}
+          <RNTextInput
+            ref={ref}
+            style={[
+              styles.text,
+              iconLeft && localStyles.textIconLeft,
+              iconRight && localStyles.textIconRight,
+            ]}
+            {...rest}
+          />
+          {iconRight && (
+            <View style={localStyles.iconRight}>
+              <Icon
+                name={iconRight}
+                size={SPACING.lg}
+                color={styles.text.color as keyof Color}
+              />
+            </View>
+          )}
+        </View>
+        {error && (
+          <Margin top={4}>
+            <Text title={error} font="overlineRegular" color="error" />
+          </Margin>
         )}
       </View>
-      {error && (
-        <Margin top={4}>
-          <Text title={error} font="overlineRegular" color="error" />
-        </Margin>
-      )}
-    </View>
-  );
-}
+    );
+  },
+);
+
+export default TextInput;
 
 const localStyles = StyleSheet.create({
   textIconLeft: {

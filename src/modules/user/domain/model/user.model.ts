@@ -1,6 +1,11 @@
+import { Item } from '@components/core';
+
 export interface User {
   uid: string;
   email: string;
   name: string;
-  imageUrl: string;
+  date: Date;
+  city: Item;
 }
+
+export type UserForm = Omit<User, 'uid'>;

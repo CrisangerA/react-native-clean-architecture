@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View, ScrollView } from 'react-native';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ScrollView,
+  TextInput as RNTextInput,
+} from 'react-native';
 // Components
 import Text from './Text';
 import { Modal } from '@components/layout';
@@ -13,76 +19,76 @@ export interface Item {
   value: string;
 }
 
-interface SelectProps extends TextInputProps {
+export interface SelectProps extends TextInputProps {
   labelModal?: string;
   options: Item[];
-  disabled?: boolean;
+  onChangeValue?: (item: Item) => void;
+  valueItem?: Item;
 }
 
-export default function Select({
-  labelModal,
-  options,
-  disabled,
-  value,
-  //onChange,
-  ...rest
-}: SelectProps) {
-  const [visible, setVisible] = React.useState(false);
+const Select = React.forwardRef<RNTextInput, SelectProps>(
+  ({ labelModal, options, valueItem: value, onChangeValue, ...rest }, ref) => {
+    const [visible, setVisible] = React.useState(false);
 
-  const selected = React.useMemo(() => {
-    return options.find(option => option.value === value)?.label || '';
-  }, [value, options]);
+    const selected = React.useMemo(() => {
+      return options.find(option => option.value === value?.value)?.label || '';
+    }, [value, options]);
 
-  return (
-    <>
-      <TouchableOpacity
-        onPress={() => setVisible(!visible)}
-        disabled={disabled}
-      >
-        <TextInput
-          {...rest}
-          iconRight="menu-swap"
-          value={selected}
-          editable={!disabled}
-          pointerEvents="none"
-        />
-      </TouchableOpacity>
-      {/* Modal para seleccionar */}
-      {visible && (
-        <Modal
-          title={labelModal || rest.label}
-          visible={visible}
-          onRequestClose={() => setVisible(!visible)}
-          icon={rest.iconLeft || rest.iconRight}
+    return (
+      <>
+        <TouchableOpacity
+          onPress={() => setVisible(!visible)}
+          disabled={rest.editable === false}
         >
-          <View style={styles.container}>
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              keyboardShouldPersistTaps="always"
-            >
-              {options.map((option, index) => (
-                <TouchableOpacity
-                  style={styles.select}
-                  key={`Option-${index}`}
-                  onPress={() => {
-                    //onChange(option.value);
-                    setVisible(!visible);
-                  }}
-                >
-                  <Text
-                    title={option.label}
-                    font="bodySRegular"
-                    numberOfLines={1}
-                  />
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
-          </View>
-        </Modal>
-      )}
-    </>
-  );
-}
+          <TextInput
+            ref={ref}
+            value={selected}
+            iconRight="menu-swap"
+            pointerEvents="none"
+            {...rest}
+          />
+        </TouchableOpacity>
+        {/* Modal para seleccionar */}
+        {visible && (
+          <Modal
+            title={labelModal || rest.label}
+            visible={visible}
+            onRequestClose={() => setVisible(!visible)}
+            icon={rest.iconLeft || rest.iconRight}
+          >
+            <View style={styles.container}>
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                keyboardShouldPersistTaps="always"
+              >
+                {options.map((option, index) => (
+                  <TouchableOpacity
+                    style={styles.select}
+                    key={`Option-${index}`}
+                    onPress={() => {
+                      onChangeValue?.(option);
+                      setVisible(!visible);
+                    }}
+                  >
+                    <Text
+                      title={option.label}
+                      font="bodySRegular"
+                      numberOfLines={1}
+                      color={
+                        value?.value === option.value ? 'primary' : 'secondary'
+                      }
+                    />
+                  </TouchableOpacity>
+                ))}
+              </ScrollView>
+            </View>
+          </Modal>
+        )}
+      </>
+    );
+  },
+);
+export default Select;
 
 const styles = StyleSheet.create({
   // Modal
