@@ -2,7 +2,7 @@
 export enum PrivateRoutes {
   Components = 'Components',
   Profile = 'Profile',
-  Example = 'Example',
+  Example = 'Form',
 }
 
 export type PrivateStackParamsList = {

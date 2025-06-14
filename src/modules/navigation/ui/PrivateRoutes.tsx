@@ -58,6 +58,11 @@ const ICONS_NAV = {
   [PrivateRoutes.Profile]: 'account',
 };
 export default function PrivateRoutesStack() {
+  const tabBarIcon = React.useCallback(
+    (name: string) => <Icon name={name} size={24} />,
+    [],
+  );
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -66,10 +71,7 @@ export default function PrivateRoutesStack() {
         tabBarStyle: {
           backgroundColor: COLORS.background,
         },
-        tabBarIcon: ({}) => {
-          const icon = ICONS_NAV[route.name];
-          return <Icon name={icon} size={24} />;
-        },
+        tabBarIcon: () => tabBarIcon(ICONS_NAV[route.name]),
         tabBarActiveTintColor: COLORS.primary,
         tabBarInactiveTintColor: COLORS.outline,
       })}

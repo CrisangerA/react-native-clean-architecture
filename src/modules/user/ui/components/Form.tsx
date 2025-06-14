@@ -79,7 +79,7 @@ export default function FormExample() {
         control={control}
         title="Acepto terminos y condiciones"
       />
-      <Margin spacing="xxl" />
+      <Margin spacing="xl" />
       <Button title="Enviar" onPress={handleSubmit(onSubmit)} />
     </View>
   );

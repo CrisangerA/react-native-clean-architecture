@@ -5,7 +5,12 @@ import FormExample from '../components/Form';
 
 const ExampleScreen: React.FC = () => {
   return (
-    <BaseLayout>
+    <BaseLayout scrollable>
+      <Margin top={12} />
+      <Text title="Formulario con validaciones" font="bodyLBold" />
+      <Margin top={12} />
+      <FormExample />
+      <Margin top={48} />
       <Text title="Formulario con validaciones" font="bodyLBold" />
       <Margin top={12} />
       <FormExample />
