@@ -8,7 +8,7 @@ import { Button, Item, Margin } from '@components/core';
 import { TextInput, DatePicker, Select, Checkbox } from '@components/form';
 // Modules
 import { UserForm } from '@modules/user/domain/model';
-import { regExpAlphabetic, regExpEmail } from '@config/regExp';
+import { regExpAlphabetic, regExpEmail, regExpNumbers } from '@config/regExp';
 
 const citiesDataSource: Item[] = [
   { label: 'Medellin', value: '1' },
@@ -34,6 +34,12 @@ export default function FormExample() {
         terms: Yup.boolean()
           .oneOf([true], 'Debe aceptar los terminos')
           .required(),
+        amount: Yup.string()
+          .required('El monto es requerido')
+          .test('min-amount', 'El monto minimo es de $1000', (value, _) => {
+            return parseFloat(value) >= 1000;
+          })
+          .matches(regExpNumbers, 'El monto es invalido'),
       }),
     ),
   });
@@ -72,6 +78,14 @@ export default function FormExample() {
         label="Ciudad"
         placeholder="Selecciona ciudad de nacimiento"
         options={citiesDataSource}
+      />
+      <Margin spacing="sm" />
+      <TextInput
+        currency
+        name="amount"
+        control={control}
+        label="Monto inicial"
+        placeholder="Ingresa tu monto inicial"
       />
       <Margin spacing="sm" />
       <Checkbox

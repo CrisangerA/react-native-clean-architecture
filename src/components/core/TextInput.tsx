@@ -5,19 +5,22 @@ import {
   TextInputProps as RNTextInputProps,
   StyleSheet,
 } from 'react-native';
+// Theme
+import { Color } from '@theme/colors';
+import { SPACING } from '@theme/spacing';
 import { Icon, Margin, Text } from './index';
 import { TEXT_INPUT_STYLES, TextInputType } from '@theme/components';
-import { SPACING } from '@theme/spacing';
-import { Color } from '@theme/colors';
 
-export interface TextInputProps extends RNTextInputProps {
+export interface TextInputBaseProps {
   label?: string;
   error?: string;
   type?: keyof TextInputType;
+  currency?: boolean;
   // icon
   iconLeft?: string;
   iconRight?: string;
 }
+export interface TextInputProps extends TextInputBaseProps, RNTextInputProps {}
 
 /**
  * The TextInput component is a customizable input field with label and error
@@ -37,6 +40,22 @@ const TextInput = React.forwardRef<RNTextInput, TextInputProps>(
     }
     if (error) {
       type = 'error';
+    }
+
+    if (rest.currency) {
+      if (rest.value && rest.value !== '') {
+        const _formated = rest.value.replace('$ ', '');
+        const value = parseFloat(_formated || '');
+        if (!Number.isNaN(value)) {
+          const formated = new Intl.NumberFormat('es-CO', {
+            style: 'currency',
+            currency: 'COP',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          }).format(value);
+          rest.value = formated;
+        }
+      }
     }
 
     const styles = TEXT_INPUT_STYLES[type];
