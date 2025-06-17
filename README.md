@@ -11,7 +11,6 @@ _It also includes base modules for user, authentication and navigation to serve 
 The template includes the following dependencies:
 
 ```json
-...
   "dependencies": {
     "@hookform/resolvers": "5.1.1",
     "@react-native-firebase/app": "22.2.0",
@@ -36,7 +35,6 @@ The template includes the following dependencies:
     "yup": "1.6.1",
     "zustand": "5.0.4"
   }
-  ...
 ```
 
 You can find more information about the dependencies in the [library catalog](https://crisangera.github.io/react-native-clean-architecture-docs/docs/libs)
@@ -64,28 +62,7 @@ bun pod-install
 
 ## 1. Firebase
 
-- 1.1 Crear un nuevo proyecto de firebase y agregar la app de Android e iOS o utilizar un proyecto de firebase existente
-- 1.2 Configurar Android (google-service.json)
-
-```grovy title="build.gradle"
-  classpath 'com.google.gms:google-services:4.4.2'
-```
-
-```grovy title="app/build.gradle"
-apply plugin: 'com.google.gms.google-services'
-```
-
-- 1.3 Configurar iOS (GoogleService-Info.plist)
-
-```swift title="Podfile.lock"
-use_frameworks! :linkage => :static
-$RNFirebaseAsStaticFramework = true
-```
-
-```swift title="AppDelegate.swift"
-import Firebase
-FirebaseApp.configure()
-```
+Crear un nuevo proyecto de firebase y agregar la app de Android e iOS o utilizar un proyecto de firebase existente
 
 ## 2. GCloud
 
@@ -93,7 +70,7 @@ FirebaseApp.configure()
 - 2.2 Configurar el clienteId en firebase
 - 2.3 Copiar las credenciales en el archivo src/config/secure-store.json
 
-## 4. Run Project
+## 3. Run Project
 
 ```bash
 bun start
