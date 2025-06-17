@@ -18,15 +18,24 @@ export default function MenuScreen() {
         title="Componentes"
         onPress={() => navigate(ExampleRoutes.Components)}
       >
-        <Text title="Aqui encontraras todos los componentes dispoinibles para utilizar en la app" />
+        <Text
+          title="Aqui encontraras todos los componentes dispoinibles para utilizar en la app"
+          color="shadow"
+        />
       </Card>
       <Margin top={theme.spacing.lg} />
       <Card title="Formularios" onPress={() => navigate(ExampleRoutes.Form)}>
-        <Text title="Ejemplos de formularios con validaciones y diferentes campos de texto" />
+        <Text
+          title="Ejemplos de formularios con validaciones y diferentes campos de texto"
+          color="shadow"
+        />
       </Card>
       <Margin top={theme.spacing.lg} />
       <Card title="Vistas" onPress={() => navigate(ExampleRoutes.Screen)}>
-        <Text title="Diferentes vistas que puedes hacer con estos componentes" />
+        <Text
+          title="Diferentes vistas que puedes hacer con estos componentes"
+          color="shadow"
+        />
       </Card>
       <Margin top={theme.spacing.xxl} />
     </BaseLayout>
