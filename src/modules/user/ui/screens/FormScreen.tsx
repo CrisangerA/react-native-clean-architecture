@@ -7,7 +7,7 @@ export default function FormScreen() {
   return (
     <BaseLayout scrollable>
       <Margin top={12} />
-      <Text title="Formulario con validaciones" font="bodyMedium" />
+      <Text title="Formulario con validaciones" font="titleMedium" />
       <Margin top={12} />
       <FormExample />
       <Margin top={48} />

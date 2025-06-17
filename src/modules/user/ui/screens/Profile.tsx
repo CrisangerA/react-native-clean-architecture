@@ -40,6 +40,7 @@ export default function ProfileScreen() {
         isLoading={isPending}
         icon="logout"
       />
+      <Margin top={30} />
     </BaseLayout>
   );
 }

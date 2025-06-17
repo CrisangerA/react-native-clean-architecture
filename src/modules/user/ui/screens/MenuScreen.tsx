@@ -28,6 +28,7 @@ export default function MenuScreen() {
       <Card title="Vistas" onPress={() => navigate(ExampleRoutes.Screen)}>
         <Text title="Diferentes vistas que puedes hacer con estos componentes" />
       </Card>
+      <Margin top={theme.spacing.xxl} />
     </BaseLayout>
   );
 }
