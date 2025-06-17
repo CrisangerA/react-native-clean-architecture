@@ -1,4 +1,4 @@
-import { horizontalScale } from '@theme/responsive';
+import { theme, horizontalScale } from '@theme/index';
 import { SPACING } from '@theme/spacing';
 import React, { PropsWithChildren } from 'react';
 import { View, StyleProp, ViewStyle } from 'react-native';
@@ -28,8 +28,8 @@ export default function Margin(props: PropsWithChildren<MarginProps>) {
       marginHorizontal: horizontalScale(horizontal),
     },
     spacing !== undefined && {
-      width: SPACING[spacing],
-      height: SPACING[spacing],
+      width: theme.spacing[spacing],
+      height: theme.spacing[spacing],
     },
     style,
   ];

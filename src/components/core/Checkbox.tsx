@@ -37,7 +37,7 @@ export default function Checkbox({
       </View>
       {error && (
         <Margin top={4}>
-          <Text title={error} font="overlineRegular" color="error" />
+          <Text title={error} font="labelSRegular" color="error" />
         </Margin>
       )}
     </>

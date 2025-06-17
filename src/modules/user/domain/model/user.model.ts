@@ -2,6 +2,7 @@ import { Item } from '@components/core';
 
 export interface User {
   uid: string;
+  imageUrl: string;
   email: string;
   name: string;
   date: Date;
@@ -10,4 +11,4 @@ export interface User {
   amount: string;
 }
 
-export type UserForm = Omit<User, 'uid'>;
+export type UserForm = Omit<User, 'uid' | 'imageUrl'>;

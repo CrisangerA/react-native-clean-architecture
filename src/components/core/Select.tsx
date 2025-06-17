@@ -11,8 +11,7 @@ import Text from './Text';
 import { Modal } from '@components/layout';
 import TextInput, { TextInputProps } from './TextInput';
 // Theme
-import { hp } from '@theme/responsive';
-import { SPACING } from '@theme/spacing';
+import { theme, hp } from '@theme/index';
 
 export interface Item {
   label: string;
@@ -96,6 +95,6 @@ const styles = StyleSheet.create({
     maxHeight: hp(60),
   },
   select: {
-    paddingVertical: SPACING.lg,
+    paddingVertical: theme.spacing.lg,
   },
 });

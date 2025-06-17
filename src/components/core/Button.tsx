@@ -1,9 +1,11 @@
 import React from 'react';
 import { TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
-
-import { Text } from './index';
-import { BUTTON_STYLES, ButtonType, Color } from '@theme/index';
+// Components
 import Icon from './Icon';
+import { Text } from './index';
+// Theme
+import { Color } from '@theme/index';
+import { BUTTON_STYLES, ButtonType } from '@theme/components';
 
 interface ButtonProps extends TouchableOpacityProps {
   onPress: () => void;

@@ -29,7 +29,7 @@ const baseStyle: ViewStyle = {
 };
 
 const baseTextStyle: TextStyle = {
-  ...TEXT_STYLES.bodySRegular,
+  ...TEXT_STYLES.bodyRegular,
   color: COLORS.primary,
   flex: 1,
 };

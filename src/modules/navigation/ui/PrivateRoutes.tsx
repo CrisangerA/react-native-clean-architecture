@@ -13,7 +13,7 @@ import ComponentsScreen from '@modules/user/ui/screens/Components';
 // Theme & Other
 import { screenWidth } from '@theme/responsive';
 import { PrivateRoutes, PrivateStackParamsList } from '../domain/model';
-import { COLORS } from '@theme/colors';
+import { theme } from '@theme/index';
 import { Icon } from '@components/core';
 
 const Tab = createBottomTabNavigator<PrivateStackParamsList>();
@@ -57,6 +57,7 @@ const ICONS_NAV = {
   [PrivateRoutes.Example]: 'image-multiple',
   [PrivateRoutes.Profile]: 'account',
 };
+
 export default function PrivateRoutesStack() {
   const tabBarIcon = React.useCallback(
     (name: string) => <Icon name={name} size={24} />,
@@ -69,11 +70,11 @@ export default function PrivateRoutesStack() {
         headerShown: false,
         lazy: true,
         tabBarStyle: {
-          backgroundColor: COLORS.background,
+          backgroundColor: theme.colors.background,
         },
         tabBarIcon: () => tabBarIcon(ICONS_NAV[route.name]),
-        tabBarActiveTintColor: COLORS.primary,
-        tabBarInactiveTintColor: COLORS.outline,
+        tabBarActiveTintColor: theme.colors.primary,
+        tabBarInactiveTintColor: theme.colors.outline,
       })}
     >
       <Tab.Screen

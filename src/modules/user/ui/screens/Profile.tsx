@@ -7,7 +7,7 @@ import { useMutationSignOut } from '@modules/authentication/application/mutation
 import { commonStyles } from '@theme/index';
 
 export default function ProfileScreen() {
-  const { user } = useUserStorage();
+  const user = useUserStorage(state => state.user);
   const { mutateAsync: signOut, isPending } = useMutationSignOut();
 
   const handleSignOut = async () => {
@@ -23,11 +23,11 @@ export default function ProfileScreen() {
         />
       </View>
       <Margin top={20} />
-      <Text font="h2Medium" align="center">
+      <Text font="headlineSMedium" align="center">
         {user.name || user.email}
       </Text>
       <Margin top={10} />
-      <Text font="bodyMRegular" align="center">
+      <Text font="titleSRegular" align="center">
         {user.email}
       </Text>
       <Margin top={30} />

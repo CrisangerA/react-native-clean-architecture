@@ -1,11 +1,9 @@
 import { TextStyle, ViewStyle } from 'react-native';
-
-import { ContainerTextStyle } from './index';
-import { COLORS } from '../colors';
+// Theme
 import { TEXT_STYLES } from './text';
-import { SPACING } from '@theme/spacing';
-import { BORDERS } from '@theme/borders';
+import { theme } from '@theme/index';
 import { commonStyles } from '@theme/common';
+import { ContainerTextStyle } from './index';
 
 export type ButtonType = {
   primary: ContainerTextStyle;
@@ -18,13 +16,13 @@ const baseStyle: ViewStyle = {
   ...commonStyles.card,
   ...commonStyles.row,
   justifyContent: 'center',
-  paddingVertical: SPACING.sm,
-  borderRadius: BORDERS.sm,
-  gap: SPACING.xs,
+  paddingVertical: theme.spacing.sm,
+  borderRadius: theme.borders.sm,
+  gap: theme.spacing.xs,
 };
 
 const baseTextStyle: TextStyle = {
-  ...TEXT_STYLES.bodyMMedium,
+  ...TEXT_STYLES.bodyMedium,
   textAlign: 'center',
 };
 
@@ -32,45 +30,45 @@ export const BUTTON_STYLES: Record<keyof ButtonType, ContainerTextStyle> = {
   primary: {
     container: {
       ...baseStyle,
-      backgroundColor: COLORS.primaryContainer,
+      backgroundColor: theme.colors.primaryContainer,
     },
     text: {
       ...baseTextStyle,
-      color: COLORS.onPrimaryContainer,
+      color: theme.colors.onPrimaryContainer,
     },
   },
   secondary: {
     container: {
       ...baseStyle,
-      backgroundColor: COLORS.secondaryContainer,
+      backgroundColor: theme.colors.secondaryContainer,
     },
     text: {
       ...baseTextStyle,
-      color: COLORS.onSecondaryContainer,
+      color: theme.colors.onSecondaryContainer,
     },
   },
   outline: {
     container: {
       ...baseStyle,
-      backgroundColor: COLORS.surface,
+      backgroundColor: theme.colors.surface,
       borderWidth: 1,
-      borderColor: COLORS.outline,
+      borderColor: theme.colors.outline,
       shadowColor: 'transparent',
     },
     text: {
       ...baseTextStyle,
-      color: COLORS.primary,
+      color: theme.colors.primary,
     },
   },
   disabled: {
     container: {
       ...baseStyle,
-      backgroundColor: COLORS.surfaceVariant,
+      backgroundColor: theme.colors.surfaceVariant,
       shadowColor: 'transparent',
     },
     text: {
       ...baseTextStyle,
-      color: COLORS.outline,
+      color: theme.colors.outline,
     },
   },
 };

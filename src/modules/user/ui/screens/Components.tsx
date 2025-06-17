@@ -81,7 +81,7 @@ export default function ComponentsScreen() {
           iconLeft="account"
         />
         <Margin top={24} />
-        <Text title="Selectores:" font="bodyMMedium" />
+        <Text title="Selectores:" font="bodyMedium" />
         <Margin top={12} />
         <Select
           pointerEvents="none"
@@ -105,7 +105,7 @@ export default function ComponentsScreen() {
           editable={false}
         />
         <Margin top={24} />
-        <Text title="Fechas:" font="bodyMMedium" />
+        <Text title="Fechas:" font="bodyMedium" />
         <Margin top={12} />
         <DatePicker
           mode="time"

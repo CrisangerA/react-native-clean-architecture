@@ -25,6 +25,10 @@ export function useMutationSignIn() {
           email: email || '',
           name: displayName || '',
           imageUrl: photoURL || '',
+          amount: '',
+          city: { label: '', value: '' },
+          date: new Date(),
+          terms: false,
         };
 
         if (result.additionalUserInfo?.isNewUser) {

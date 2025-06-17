@@ -6,8 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 // Theme
-import { Color } from '@theme/colors';
-import { SPACING } from '@theme/spacing';
+import { theme, Color } from '@theme/index';
 import { Icon, Margin, Text } from './index';
 import { TEXT_INPUT_STYLES, TextInputType } from '@theme/components';
 
@@ -76,7 +75,7 @@ const TextInput = React.forwardRef<RNTextInput, TextInputProps>(
             <View>
               <Icon
                 name={iconLeft}
-                size={SPACING.lg}
+                size={theme.spacing.lg}
                 color={styles.text.color as keyof Color}
               />
             </View>
@@ -94,7 +93,7 @@ const TextInput = React.forwardRef<RNTextInput, TextInputProps>(
             <View style={localStyles.iconRight}>
               <Icon
                 name={iconRight}
-                size={SPACING.lg}
+                size={theme.spacing.lg}
                 color={styles.text.color as keyof Color}
               />
             </View>
@@ -102,7 +101,7 @@ const TextInput = React.forwardRef<RNTextInput, TextInputProps>(
         </View>
         {error && (
           <Margin top={4}>
-            <Text title={error} font="overlineRegular" color="error" />
+            <Text title={error} font="labelSRegular" color="error" />
           </Margin>
         )}
       </View>
@@ -114,13 +113,13 @@ export default TextInput;
 
 const localStyles = StyleSheet.create({
   textIconLeft: {
-    paddingLeft: SPACING.xs,
+    paddingLeft: theme.spacing.xs,
   },
   iconRight: {
     position: 'absolute',
-    right: SPACING.sm,
+    right: theme.spacing.sm,
   },
   textIconRight: {
-    paddingRight: SPACING.lg,
+    paddingRight: theme.spacing.lg,
   },
 });

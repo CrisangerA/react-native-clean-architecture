@@ -1,8 +1,7 @@
 import { ScrollView, StyleSheet, View, ViewStyle } from 'react-native';
 import React, { PropsWithChildren } from 'react';
 
-import { SPACING } from '@theme/spacing';
-import { COLORS } from '@theme/colors';
+import { theme } from '@theme/index';
 
 interface BaseLayoutProps {
   style?: ViewStyle;
@@ -29,9 +28,9 @@ export default function BaseLayout({
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: theme.colors.background,
   },
   padding: {
-    paddingHorizontal: SPACING.md,
+    paddingHorizontal: theme.spacing.md,
   },
 });

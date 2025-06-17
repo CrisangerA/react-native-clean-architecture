@@ -4,7 +4,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 // Theme
-import { COLORS, commonStyles } from '@theme/index';
+import { theme, commonStyles } from '@theme/index';
 
 const queryClient = new QueryClient();
 
@@ -24,6 +24,6 @@ export default function AppContainer({ children }: PropsWithChildren) {
 const styles = StyleSheet.create({
   safeArea: {
     ...commonStyles.flex,
-    backgroundColor: COLORS.background,
+    backgroundColor: theme.colors.background,
   },
 });

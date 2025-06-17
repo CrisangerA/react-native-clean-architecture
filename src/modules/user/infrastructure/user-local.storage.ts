@@ -9,6 +9,10 @@ const initialState: State = {
     email: '',
     name: '',
     imageUrl: '',
+    amount: '0',
+    terms: false,
+    date: new Date(),
+    city: { label: '', value: '' },
   },
 };
 

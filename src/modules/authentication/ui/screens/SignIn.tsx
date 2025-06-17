@@ -18,7 +18,7 @@ export default function SignIn() {
 
   return (
     <BaseLayout>
-      <Text title={app.displayName} font="h1Medium" />
+      <Text title={app.displayName} font="titleMedium" />
       <Margin top={20} />
       <Button
         title="Iniciar Sesión"

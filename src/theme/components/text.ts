@@ -3,7 +3,45 @@
 // Si se necesitan estilos específicos adicionales para el componente Text que no son
 
 import { TextStyle } from 'react-native';
-import { TextType, FONT_FAMILY, FONT_SIZES } from '../fonts';
+import { FONT_FAMILY, FONT_SIZES } from '../fonts';
+
+export type TextType = {
+  displayRegular: TextStyle;
+  displayMedium: TextStyle;
+  displayBold: TextStyle;
+
+  headlineRegular: TextStyle;
+  headlineMedium: TextStyle;
+  headlineBold: TextStyle;
+
+  headlineSRegular: TextStyle;
+  headlineSMedium: TextStyle;
+  headlineSBold: TextStyle;
+
+  titleRegular: TextStyle;
+  titleMedium: TextStyle;
+  titleBold: TextStyle;
+
+  titleSRegular: TextStyle;
+  titleSMedium: TextStyle;
+  titleSBold: TextStyle;
+
+  bodyRegular: TextStyle;
+  bodyMedium: TextStyle;
+  bodyBold: TextStyle;
+
+  bodySRegular: TextStyle;
+  bodySMedium: TextStyle;
+  bodySBold: TextStyle;
+
+  labelRegular: TextStyle;
+  labelMedium: TextStyle;
+  labelBold: TextStyle;
+
+  labelSRegular: TextStyle;
+  labelSMedium: TextStyle;
+  labelSBold: TextStyle;
+};
 
 export const TEXT_STYLES: Record<keyof TextType, TextStyle> = {
   // Display
@@ -22,73 +60,91 @@ export const TEXT_STYLES: Record<keyof TextType, TextStyle> = {
     fontWeight: 'bold',
   },
 
-  // Heading 1
-  h1Regular: { fontFamily: FONT_FAMILY.regular, fontSize: FONT_SIZES.h1 },
-  h1Medium: {
+  // Headline
+  headlineRegular: {
+    fontFamily: FONT_FAMILY.regular,
+    fontSize: FONT_SIZES.headline,
+  },
+  headlineMedium: {
     fontFamily: FONT_FAMILY.medium,
-    fontSize: FONT_SIZES.h1,
+    fontSize: FONT_SIZES.headline,
     fontWeight: '500',
   },
-  h1Bold: {
+  headlineBold: {
     fontFamily: FONT_FAMILY.bold,
-    fontSize: FONT_SIZES.h1,
+    fontSize: FONT_SIZES.headline,
     fontWeight: 'bold',
   },
 
-  // Heading 2
-  h2Regular: { fontFamily: FONT_FAMILY.regular, fontSize: FONT_SIZES.h2 },
-  h2Medium: {
+  // Headline Small
+  headlineSRegular: {
+    fontFamily: FONT_FAMILY.regular,
+    fontSize: FONT_SIZES.headlineS,
+  },
+  headlineSMedium: {
     fontFamily: FONT_FAMILY.medium,
-    fontSize: FONT_SIZES.h2,
+    fontSize: FONT_SIZES.headlineS,
     fontWeight: '500',
   },
-  h2Bold: {
+  headlineSBold: {
     fontFamily: FONT_FAMILY.bold,
-    fontSize: FONT_SIZES.h2,
+    fontSize: FONT_SIZES.headlineS,
     fontWeight: 'bold',
   },
 
-  // Heading 3
-  h3Regular: { fontFamily: FONT_FAMILY.regular, fontSize: FONT_SIZES.h3 },
-  h3Medium: {
+  // Title
+  titleRegular: {
+    fontFamily: FONT_FAMILY.regular,
+    fontSize: FONT_SIZES.title,
+  },
+  titleMedium: {
     fontFamily: FONT_FAMILY.medium,
-    fontSize: FONT_SIZES.h3,
+    fontSize: FONT_SIZES.title,
     fontWeight: '500',
   },
-  h3Bold: {
+  titleBold: {
     fontFamily: FONT_FAMILY.bold,
-    fontSize: FONT_SIZES.h3,
+    fontSize: FONT_SIZES.title,
     fontWeight: 'bold',
   },
 
-  // Body Large
-  bodyLRegular: { fontFamily: FONT_FAMILY.regular, fontSize: FONT_SIZES.bodyL },
-  bodyLMedium: {
+  // Title Small
+  titleSRegular: {
+    fontFamily: FONT_FAMILY.regular,
+    fontSize: FONT_SIZES.titleS,
+  },
+  titleSMedium: {
     fontFamily: FONT_FAMILY.medium,
-    fontSize: FONT_SIZES.bodyL,
+    fontSize: FONT_SIZES.titleS,
     fontWeight: '500',
   },
-  bodyLBold: {
+  titleSBold: {
     fontFamily: FONT_FAMILY.bold,
-    fontSize: FONT_SIZES.bodyL,
+    fontSize: FONT_SIZES.titleS,
     fontWeight: 'bold',
   },
 
-  // Body Medium (Default)
-  bodyMRegular: { fontFamily: FONT_FAMILY.regular, fontSize: FONT_SIZES.bodyM },
-  bodyMMedium: {
+  // Body
+  bodyRegular: {
+    fontFamily: FONT_FAMILY.regular,
+    fontSize: FONT_SIZES.body,
+  },
+  bodyMedium: {
     fontFamily: FONT_FAMILY.medium,
-    fontSize: FONT_SIZES.bodyM,
+    fontSize: FONT_SIZES.body,
     fontWeight: '500',
   },
-  bodyMBold: {
+  bodyBold: {
     fontFamily: FONT_FAMILY.bold,
-    fontSize: FONT_SIZES.bodyM,
+    fontSize: FONT_SIZES.body,
     fontWeight: 'bold',
   },
 
   // Body Small
-  bodySRegular: { fontFamily: FONT_FAMILY.regular, fontSize: FONT_SIZES.bodyS },
+  bodySRegular: {
+    fontFamily: FONT_FAMILY.regular,
+    fontSize: FONT_SIZES.bodyS,
+  },
   bodySMedium: {
     fontFamily: FONT_FAMILY.medium,
     fontSize: FONT_SIZES.bodyS,
@@ -100,35 +156,35 @@ export const TEXT_STYLES: Record<keyof TextType, TextStyle> = {
     fontWeight: 'bold',
   },
 
-  // Caption
-  captionRegular: {
+  // Label
+  labelRegular: {
     fontFamily: FONT_FAMILY.regular,
-    fontSize: FONT_SIZES.caption,
+    fontSize: FONT_SIZES.label,
   },
-  captionMedium: {
+  labelMedium: {
     fontFamily: FONT_FAMILY.medium,
-    fontSize: FONT_SIZES.caption,
+    fontSize: FONT_SIZES.label,
     fontWeight: '500',
   },
-  captionBold: {
+  labelBold: {
     fontFamily: FONT_FAMILY.bold,
-    fontSize: FONT_SIZES.caption,
+    fontSize: FONT_SIZES.label,
     fontWeight: 'bold',
   },
 
-  // Overline
-  overlineRegular: {
+  // Label Small
+  labelSRegular: {
     fontFamily: FONT_FAMILY.regular,
-    fontSize: FONT_SIZES.overline,
+    fontSize: FONT_SIZES.labelS,
   },
-  overlineMedium: {
+  labelSMedium: {
     fontFamily: FONT_FAMILY.medium,
-    fontSize: FONT_SIZES.overline,
+    fontSize: FONT_SIZES.labelS,
     fontWeight: '500',
   },
-  overlineBold: {
+  labelSBold: {
     fontFamily: FONT_FAMILY.bold,
-    fontSize: FONT_SIZES.overline,
+    fontSize: FONT_SIZES.labelS,
     fontWeight: 'bold',
   },
 };

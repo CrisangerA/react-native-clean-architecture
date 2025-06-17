@@ -4,7 +4,8 @@ import {
   TextProps as RNTextProps,
 } from 'react-native';
 import { PropsWithChildren } from 'react';
-import { TEXT_STYLES, FontStyle, Color, getColor } from '@theme/index';
+import { Color, getColor } from '@theme/index';
+import { TEXT_STYLES, FontStyle } from '@theme/components';
 
 export interface TextProps extends RNTextProps {
   title?: string;
@@ -17,7 +18,7 @@ export interface TextProps extends RNTextProps {
 
 export default function Text({
   title,
-  font = 'bodyMRegular',
+  font = 'bodyMedium',
   color = 'primary',
   align,
   underline,

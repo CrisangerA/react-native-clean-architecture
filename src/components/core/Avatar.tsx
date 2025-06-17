@@ -1,6 +1,8 @@
 import React from 'react';
 import { Image, View, ImageSourcePropType } from 'react-native';
-import { horizontalScale, AVATAR_STYLES, AvatarType } from '@theme/index';
+// Theme
+import { horizontalScale } from '@theme/index';
+import { AVATAR_STYLES, AvatarType } from '@theme/components';
 
 interface AvatarProps {
   source?: ImageSourcePropType;

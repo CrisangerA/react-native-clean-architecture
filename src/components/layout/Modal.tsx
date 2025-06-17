@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { StyleSheet, View, Modal as RNModal } from 'react-native';
 
-import { SPACING } from '@theme/spacing';
+import { theme } from '@theme/index';
 import { Icon, Margin, Text } from '@components/core';
 
 interface ModalProps {
@@ -36,7 +36,7 @@ export default function Modal({
                 <Margin right={8} />
               </>
             )}
-            {title && <Text title={title} font="bodyLMedium" align="center" />}
+            {title && <Text title={title} font="bodyMedium" align="center" />}
           </View>
 
           <Margin top={12} />
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 20,
     width: '90%',
-    paddingHorizontal: SPACING.lg,
-    paddingVertical: SPACING.lg,
+    paddingHorizontal: theme.spacing.lg,
+    paddingVertical: theme.spacing.lg,
   },
   row: {
     flexDirection: 'row',
