@@ -41,15 +41,15 @@ You can find more information about the dependencies in the [library catalog](ht
 
 ## Get started
 
-### 1. Install libs
+### 1. Install libs
 
-1. Install libs
+Install node modules
 
 ```bash
 bun install
 ```
 
-2. instalar dependencias iOS
+Install pods
 
 ```bash
 bun pod-install
