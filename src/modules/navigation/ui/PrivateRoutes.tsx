@@ -8,13 +8,12 @@ import { Easing } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 // Screens
 import ProfileScreen from '@modules/user/ui/screens/Profile';
-import ExampleScreen from '@modules/user/ui/screens/ExampleScreen';
-import ComponentsScreen from '@modules/user/ui/screens/Components';
 // Theme & Other
 import { screenWidth } from '@theme/responsive';
 import { PrivateRoutes, PrivateStackParamsList } from '../domain/model';
 import { theme } from '@theme/index';
 import { Icon } from '@components/core';
+import ExampleRoutesStack from './ExampleRoutes';
 
 const Tab = createBottomTabNavigator<PrivateStackParamsList>();
 export const useNavigationPrivate = () =>
@@ -53,7 +52,6 @@ const slideAnimationOptions = {
 };
 
 const ICONS_NAV = {
-  [PrivateRoutes.Components]: 'home',
   [PrivateRoutes.Example]: 'image-multiple',
   [PrivateRoutes.Profile]: 'account',
 };
@@ -78,13 +76,8 @@ export default function PrivateRoutesStack() {
       })}
     >
       <Tab.Screen
-        name={PrivateRoutes.Components}
-        component={ComponentsScreen}
-        options={slideAnimationOptions}
-      />
-      <Tab.Screen
         name={PrivateRoutes.Example}
-        component={ExampleScreen}
+        component={ExampleRoutesStack}
         options={slideAnimationOptions}
       />
       <Tab.Screen

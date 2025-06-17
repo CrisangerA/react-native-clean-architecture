@@ -7,6 +7,7 @@ import {
   PrivateStackParamsList,
   PublicStackParamsList,
 } from '@modules/navigation/domain/model';
+import { ExampleStackParamsList } from '@modules/navigation/domain/model/example-routes';
 
 export const useNavigationOnboarding = () =>
   useNavigation<NativeStackNavigationProp<OnboardingStackParamsList>>();
@@ -16,3 +17,6 @@ export const useNavigationPrivate = () =>
 
 export const useNavigationPublic = () =>
   useNavigation<NativeStackNavigationProp<PublicStackParamsList>>();
+
+export const useNavigationExample = () =>
+  useNavigation<NativeStackNavigationProp<ExampleStackParamsList>>();

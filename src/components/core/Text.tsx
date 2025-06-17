@@ -18,7 +18,7 @@ export interface TextProps extends RNTextProps {
 
 export default function Text({
   title,
-  font = 'bodyMedium',
+  font = 'bodyRegular',
   color = 'primary',
   align,
   underline,
