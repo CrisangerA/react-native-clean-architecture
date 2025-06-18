@@ -1,12 +1,23 @@
-import { horizontalScale } from './responsive';
+import { Platform, ViewStyle } from 'react-native';
+import { COLORS } from './colors';
 
-const SPACING_UNIT = 2;
-
-export const SHADOWS = {
-  xs: horizontalScale(SPACING_UNIT / 2), // 4px
-  sm: horizontalScale(SPACING_UNIT), // 8px
-  md: horizontalScale(SPACING_UNIT * 2), // 16px
-  lg: horizontalScale(SPACING_UNIT * 3), // 24px
-  xl: horizontalScale(SPACING_UNIT * 4), // 32px
-  xxl: horizontalScale(SPACING_UNIT * 5), // 40px
+export type Shadow = {
+  md: 'md';
 };
+
+export const SHADOWS: Record<keyof Shadow, ViewStyle> = {
+  md: Platform.select({
+    ios: {
+      shadowColor: COLORS.shadow,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.3,
+      shadowRadius: 6,
+    },
+    android: {
+      elevation: 12,
+    },
+    default: {},
+  }),
+};
+
+SHADOWS.md;

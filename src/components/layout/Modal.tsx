@@ -1,13 +1,19 @@
 import React, { PropsWithChildren } from 'react';
-import { StyleSheet, View, Modal as RNModal } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Modal as RNModal,
+  TouchableOpacity,
+} from 'react-native';
 
-import { theme } from '@theme/index';
+import { SPACING, theme } from '@theme/index';
 import { Icon, Margin, Text } from '@components/core';
 
 interface ModalProps {
   visible: boolean;
   onRequestClose?: () => void;
   title?: string;
+  onPressIcon?: () => void;
   icon?: string;
 }
 
@@ -16,6 +22,7 @@ export default function Modal({
   onRequestClose,
   children,
   title,
+  onPressIcon,
   icon,
 }: PropsWithChildren<ModalProps>) {
   return (
@@ -31,10 +38,11 @@ export default function Modal({
         <View style={styles.container}>
           <View style={styles.row}>
             {icon && (
-              <>
-                <Icon name={icon} />
-                <Margin right={8} />
-              </>
+              <Margin right={SPACING.xs}>
+                <TouchableOpacity onPress={onPressIcon}>
+                  <Icon name={icon} />
+                </TouchableOpacity>
+              </Margin>
             )}
             {title && <Text title={title} font="bodyMedium" align="center" />}
           </View>

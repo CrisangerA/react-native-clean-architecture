@@ -11,8 +11,8 @@ import {
   Icon,
   Avatar,
 } from '@components/core';
-import { BaseLayout } from '@components/layout';
-import { theme } from '@theme/index';
+import { BaseLayout, Loading, Modal } from '@components/layout';
+import { commonStyles, theme } from '@theme/index';
 import { StyleSheet, View } from 'react-native';
 
 // Opciones para el componente Select
@@ -31,6 +31,8 @@ export default function ComponentsScreen() {
     label: string;
     value: string;
   }>();
+
+  const [showBasicModal, setshowBasicModal] = useState(false);
   return (
     <BaseLayout scrollable>
       <Text title="Componentes Core" font="headlineMedium" align="center" />
@@ -44,10 +46,18 @@ export default function ComponentsScreen() {
         <Text title="Body" font="bodyMedium" />
         <Text title="Label" font="labelMedium" />
         <Margin top={theme.spacing.sm} />
-        <Text title="Texto con color primario" color="primary" />
-        <Text title="Texto con color secundario" color="secondary" />
+        <Text
+          title="Texto con color primario"
+          color="primary"
+          font="bodyBold"
+        />
+        <Text
+          title="Texto con color secundario"
+          color="secondary"
+          font="bodyMedium"
+        />
         <Text title="Texto con color de error" color="error" />
-        <Text title="Texto subrayado" underline />
+        <Text title="Texto subrayado" underline font="bodyRegular" />
       </Card>
 
       <Margin top={theme.spacing.md} />
@@ -202,10 +212,43 @@ export default function ComponentsScreen() {
 
       {/* Sección de Avatar */}
       <Card title="Avatares">
-        <View style={styles.avatarContainer}>
+        <View style={commonStyles.row}>
           <Avatar size={40} />
           <Avatar size={60} />
           <Avatar size={80} source={{ uri: 'https://i.pravatar.cc/300' }} />
+        </View>
+      </Card>
+
+      <Margin top={theme.spacing.md} />
+
+      <Text title="Componentes Layout" font="headlineMedium" align="center" />
+      <Margin top={theme.spacing.md} />
+
+      {/* Modal Section */}
+      <Card title="Modales">
+        <Button
+          title="Abrir Modal Básico"
+          onPress={() => setshowBasicModal(true)}
+        />
+        <Modal
+          visible={showBasicModal}
+          onRequestClose={() => setshowBasicModal(false)}
+          onPressIcon={() => setshowBasicModal(false)}
+          title="Modal Básico"
+          icon="close"
+        >
+          <Text title="Este es un modal básico con contenido simple" />
+        </Modal>
+      </Card>
+
+      <Margin top={theme.spacing.md} />
+
+      {/* Loading Section */}
+      <Card title="Loading">
+        <View>
+          <Loading size="small" />
+          <Margin right={theme.spacing.md} />
+          <Loading size="large" label="Custom text..." />
         </View>
       </Card>
 

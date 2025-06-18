@@ -2,16 +2,24 @@ import React from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 // Components
 import { Text } from '@components/core';
-import { theme } from '@theme/index';
+import { Color, theme } from '@theme/index';
 
 interface LoadingProps {
   label?: string;
+  size?: 'small' | 'large';
+  color?: keyof Color;
 }
-export default function Loading({ label }: LoadingProps) {
+export default function Loading({
+  label,
+  size,
+  color = 'primary',
+}: LoadingProps) {
   return (
     <View style={styles.root}>
-      <ActivityIndicator />
-      <Text font="bodyMedium">{label || ' Loading'}</Text>
+      <ActivityIndicator size={size} color={theme.colors[color]} />
+      <Text font="bodyMedium" color={color}>
+        {label || 'Loading'}
+      </Text>
     </View>
   );
 }

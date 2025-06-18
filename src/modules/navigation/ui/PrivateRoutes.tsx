@@ -8,12 +8,18 @@ import { Easing } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 // Screens
 import ProfileScreen from '@modules/user/ui/screens/Profile';
-// Theme & Other
-import { screenWidth } from '@theme/responsive';
-import { PrivateRoutes, PrivateStackParamsList } from '../domain/model';
-import { theme } from '@theme/index';
-import { Icon } from '@components/core';
 import ExampleRoutesStack from './ExampleRoutes';
+// Theme & Other
+import { SPACING, theme } from '@theme/index';
+import { screenWidth } from '@theme/responsive';
+// Components
+import { Icon } from '@components/core';
+// Navigation types
+import {
+  ICONS_PRIVATE_NAV,
+  PrivateRoutes,
+  PrivateStackParamsList,
+} from '../domain/model';
 
 const Tab = createBottomTabNavigator<PrivateStackParamsList>();
 export const useNavigationPrivate = () =>
@@ -51,14 +57,9 @@ const slideAnimationOptions = {
   }),
 };
 
-const ICONS_NAV = {
-  [PrivateRoutes.Example]: 'image-multiple',
-  [PrivateRoutes.Profile]: 'account',
-};
-
 export default function PrivateRoutesStack() {
   const tabBarIcon = React.useCallback(
-    (name: string) => <Icon name={name} size={24} />,
+    (name: string) => <Icon name={name} size={SPACING.lg} />,
     [],
   );
 
@@ -70,7 +71,7 @@ export default function PrivateRoutesStack() {
         tabBarStyle: {
           backgroundColor: theme.colors.background,
         },
-        tabBarIcon: () => tabBarIcon(ICONS_NAV[route.name]),
+        tabBarIcon: () => tabBarIcon(ICONS_PRIVATE_NAV[route.name]),
         tabBarActiveTintColor: theme.colors.primary,
         tabBarInactiveTintColor: theme.colors.outline,
       })}

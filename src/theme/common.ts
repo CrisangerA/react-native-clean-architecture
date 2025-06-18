@@ -2,6 +2,7 @@ import { horizontalScale, verticalScale } from '@theme/responsive';
 import { StyleSheet } from 'react-native';
 import { COLORS } from './colors';
 import { SPACING } from './spacing';
+import { SHADOWS } from './shadows';
 
 export const commonStyles = StyleSheet.create({
   flex: { flex: 1 },
@@ -39,13 +40,9 @@ export const commonStyles = StyleSheet.create({
   },
   // Card styles
   card: {
+    ...SHADOWS.md,
     backgroundColor: COLORS.surface,
     borderRadius: SPACING.md,
     padding: SPACING.md,
-    shadowColor: COLORS.outline,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 3,
-    elevation: 8,
   },
 });
