@@ -6,7 +6,7 @@ This template allows you to initialize a new react native application and saves 
 
 _It also includes base modules for user, authentication and navigation to serve as an example of how to work with this template._
 
-![](https://firebasestorage.googleapis.com/v0/b/mi-barbershop-dev.firebasestorage.app/o/PUBLIC%2FMenu.png?alt=media&token=976cac37-e429-447e-aa45-990e7a1ec458)
+![](https://crisangera.github.io/react-native-clean-architecture-docs/assets/images/rnca_preview_template_app-aa9c1a6cd85df85b1d6b253973405f04.mov)
 
 The template includes the following dependencies:
 
