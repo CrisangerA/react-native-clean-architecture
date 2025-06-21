@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useUserStorage } from '@modules/user/infrastructure/user-local.storage';
 import { userService } from '@modules/user/infrastructure/user.service';
+import { QUERY_KEY_USER } from '@modules/user/domain/query.keys';
 
 /**
  * Hook para consultar si el usuario tiene pendiente el onboarding
@@ -10,7 +11,7 @@ export function useQueryUserHasOnboarding() {
   const uid = useUserStorage(state => state.user.uid);
 
   return useQuery({
-    queryKey: ['user', 'hasOnboarding', uid],
+    queryKey: QUERY_KEY_USER.hasOnboarding(uid),
     queryFn: async () => {
       if (!uid) {
         throw new Error('User not authenticated');
