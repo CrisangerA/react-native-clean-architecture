@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 // Screens
 import ProfileScreen from '@modules/user/ui/screens/Profile';
 import ExampleRoutesStack from './ExampleRoutes';
+import ProductRoutesStack from './ProductRoutes';
 // Theme & Other
 import { SPACING, theme } from '@theme/index';
 import { screenWidth } from '@theme/responsive';
@@ -79,6 +80,11 @@ export default function PrivateRoutesStack() {
       <Tab.Screen
         name={PrivateRoutes.Example}
         component={ExampleRoutesStack}
+        options={slideAnimationOptions}
+      />
+      <Tab.Screen
+        name={PrivateRoutes.Products}
+        component={ProductRoutesStack}
         options={slideAnimationOptions}
       />
       <Tab.Screen

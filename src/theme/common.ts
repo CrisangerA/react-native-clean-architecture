@@ -6,6 +6,7 @@ import { SHADOWS } from './shadows';
 
 export const commonStyles = StyleSheet.create({
   flex: { flex: 1 },
+  ph0: { paddingHorizontal: 0 },
   centerContainer: {
     justifyContent: 'center',
     alignItems: 'center',
