@@ -4,17 +4,19 @@ import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Text from './Text';
 import Margin from './Margin';
 // Theme
-import { Shadow, SHADOWS, theme, commonStyles } from '@theme/index';
+import { Shadow, SHADOWS, theme, commonStyles, Color } from '@theme/index';
 
 interface CardProps {
   title?: string;
   onPress?: () => void;
   shadow?: keyof Shadow;
+  titleColor?: keyof Color;
 }
 
 export default function Card({
   children,
   shadow = 'md',
+  titleColor,
   ...props
 }: PropsWithChildren<CardProps>) {
   const Container = props.onPress ? TouchableOpacity : View;
@@ -23,7 +25,7 @@ export default function Card({
     <Container style={[styles.root, SHADOWS[shadow]]} onPress={props.onPress}>
       {props.title && (
         <Margin bottom={theme.spacing.md}>
-          <Text title={props.title} font="titleSBold" />
+          <Text title={props.title} font="titleSBold" color={titleColor} />
         </Margin>
       )}
       {children}

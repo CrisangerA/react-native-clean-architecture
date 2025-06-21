@@ -9,7 +9,11 @@ export default function MenuScreen() {
   const { navigate } = useNavigationExample();
   return (
     <BaseLayout scrollable>
-      <Text title="React Native Simple Template" font="headlineMedium" />
+      <Text
+        title="React Native Simple Template"
+        font="headlineMedium"
+        color="onSurface"
+      />
       <Margin top={theme.spacing.xl} />
       <Card
         title="Componentes"
