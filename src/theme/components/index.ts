@@ -2,6 +2,7 @@ import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
 export * from './avatar';
 export * from './button';
+export * from './icon-button';
 export * from './text-input';
 export * from './text';
 

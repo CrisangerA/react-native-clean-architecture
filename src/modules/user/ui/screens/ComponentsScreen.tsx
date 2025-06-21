@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   Text,
   Button,
+  IconButton,
   TextInput,
   Margin,
   Select,
@@ -84,6 +85,75 @@ export default function ComponentsScreen() {
           icon="home"
           iconPosition="right"
         />
+      </Card>
+
+      <Margin top={theme.spacing.md} />
+
+      {/* Sección de IconButtons */}
+      <Card title="Botones de Icono">
+        <View style={styles.iconButtonsContainer}>
+          <View style={styles.iconButtonItem}>
+            <IconButton icon="home" onPress={() => {}} type="default" />
+            <Text title="Default" font="labelSRegular" align="center" />
+          </View>
+          <View style={styles.iconButtonItem}>
+            <IconButton icon="account" onPress={() => {}} type="primary" />
+            <Text title="Primary" font="labelSRegular" align="center" />
+          </View>
+          <View style={styles.iconButtonItem}>
+            <IconButton icon="magnify" onPress={() => {}} type="secondary" />
+            <Text title="Secondary" font="labelSRegular" align="center" />
+          </View>
+          <View style={styles.iconButtonItem}>
+            <IconButton
+              icon="calendar-blank"
+              onPress={() => {}}
+              type="surface"
+            />
+            <Text title="Surface" font="labelSRegular" align="center" />
+          </View>
+          <View style={styles.iconButtonItem}>
+            <IconButton
+              icon="close"
+              onPress={() => {}}
+              type="disabled"
+              disabled
+            />
+            <Text title="Disabled" font="labelSRegular" align="center" />
+          </View>
+        </View>
+        <Margin top={theme.spacing.sm} />
+        <Text title="Tamaños disponibles:" font="bodyBold" />
+        <Margin top={theme.spacing.xs} />
+        <View style={styles.iconButtonSizesContainer}>
+          <View style={styles.iconButtonItem}>
+            <IconButton
+              icon="heart"
+              onPress={() => {}}
+              type="primary"
+              size={14}
+            />
+            <Text title="Small (14)" font="labelSRegular" align="center" />
+          </View>
+          <View style={styles.iconButtonItem}>
+            <IconButton
+              icon="heart"
+              onPress={() => {}}
+              type="primary"
+              size={24}
+            />
+            <Text title="Medium (24)" font="labelSRegular" align="center" />
+          </View>
+          <View style={styles.iconButtonItem}>
+            <IconButton
+              icon="heart"
+              onPress={() => {}}
+              type="primary"
+              size={40}
+            />
+            <Text title="Large (40)" font="labelSRegular" align="center" />
+          </View>
+        </View>
       </Card>
 
       <Margin top={theme.spacing.md} />
@@ -277,5 +347,22 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     marginVertical: theme.spacing.md,
+  },
+  iconButtonsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginVertical: theme.spacing.sm,
+  },
+  iconButtonItem: {
+    alignItems: 'center',
+    marginVertical: theme.spacing.sm,
+    width: '18%',
+  },
+  iconButtonSizesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginVertical: theme.spacing.sm,
   },
 });
