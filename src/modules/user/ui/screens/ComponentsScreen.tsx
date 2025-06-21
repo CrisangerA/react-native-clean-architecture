@@ -35,7 +35,7 @@ export default function ComponentsScreen() {
   const [showBasicModal, setshowBasicModal] = useState(false);
   return (
     <BaseLayout scrollable>
-      <Text title="Componentes Core" font="headlineMedium" align="center" />
+      <Text title="Componentes Core" font="headlineBold" align="center" />
       <Margin top={theme.spacing.md} />
 
       {/* Sección de Textos */}
@@ -212,16 +212,17 @@ export default function ComponentsScreen() {
 
       {/* Sección de Avatar */}
       <Card title="Avatares">
-        <View style={commonStyles.row}>
-          <Avatar size={40} />
-          <Avatar size={60} />
-          <Avatar size={80} source={{ uri: 'https://i.pravatar.cc/300' }} />
+        <View style={[commonStyles.row, commonStyles.spaceBetween]}>
+          <Avatar type="avatar" source={{ uri: 'https://i.pravatar.cc/300' }} />
+          <Avatar />
+          <Avatar type="photo" />
+          <Avatar type="card" source={{ uri: 'https://i.pravatar.cc/300' }} />
         </View>
       </Card>
 
       <Margin top={theme.spacing.md} />
 
-      <Text title="Componentes Layout" font="headlineMedium" align="center" />
+      <Text title="Componentes Layout" font="headlineBold" align="center" />
       <Margin top={theme.spacing.md} />
 
       {/* Modal Section */}

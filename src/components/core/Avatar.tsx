@@ -12,10 +12,13 @@ interface AvatarProps {
 
 const Avatar: React.FC<AvatarProps> = ({
   source = { uri: 'https://cdn2.thecatapi.com/images/ebv.jpg' },
-  size = 50,
+  size,
   type = 'profile',
 }) => {
   const imageSize = React.useMemo(() => {
+    if (!size) {
+      return;
+    }
     const realSize = horizontalScale(size);
     return {
       width: realSize,
@@ -28,7 +31,10 @@ const Avatar: React.FC<AvatarProps> = ({
 
   return (
     <View style={styles.container}>
-      <Image source={source} style={[styles.image, imageSize]} />
+      <Image
+        source={source}
+        style={[styles.image, imageSize ? imageSize : {}]}
+      />
     </View>
   );
 };
