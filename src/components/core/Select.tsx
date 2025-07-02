@@ -73,9 +73,7 @@ const Select = React.forwardRef<RNTextInput, SelectProps>(
                       title={option.label}
                       font="bodySRegular"
                       numberOfLines={1}
-                      color={
-                        value?.value === option.value ? 'primary' : 'secondary'
-                      }
+                      color={value?.value === option.value ? 'primary' : 'text'}
                     />
                   </TouchableOpacity>
                 ))}

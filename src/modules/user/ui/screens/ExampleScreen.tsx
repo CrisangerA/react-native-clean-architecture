@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { BaseLayout } from '@components/layout';
 import {
   Avatar,
@@ -12,7 +12,12 @@ import {
   Text,
   TextInput,
 } from '@components/core';
-import { commonStyles, theme } from '@theme/index';
+import {
+  commonStyles,
+  horizontalScale,
+  theme,
+  verticalScale,
+} from '@theme/index';
 
 /**
  * Pantalla de perfil de usuario que muestra información personal
@@ -114,7 +119,7 @@ export default function ExampleScreen() {
             {/* Email */}
             <Card shadow="md">
               <View style={commonStyles.row}>
-                <View style={commonStyles.iconContainer}>
+                <View style={styles.iconContainer}>
                   <Icon name="email" size={20} color="primary" />
                 </View>
                 <View style={commonStyles.flex}>
@@ -133,7 +138,7 @@ export default function ExampleScreen() {
             {/* Phone */}
             <Card shadow="md">
               <View style={commonStyles.row}>
-                <View style={commonStyles.iconContainer}>
+                <View style={styles.iconContainer}>
                   <Icon name="phone" size={20} color="primary" />
                 </View>
                 <View style={commonStyles.flex}>
@@ -167,7 +172,7 @@ export default function ExampleScreen() {
         <Card shadow="md">
           <View>
             <View style={commonStyles.rowWithFlex}>
-              <View style={commonStyles.iconContainer}>
+              <View style={styles.iconContainer}>
                 <Icon name="bell" size={20} color="primary" />
               </View>
               <View style={commonStyles.flex}>
@@ -198,7 +203,7 @@ export default function ExampleScreen() {
         <Card shadow="md">
           <View>
             <View style={commonStyles.rowWithFlex}>
-              <View style={commonStyles.iconContainer}>
+              <View style={styles.iconContainer}>
                 <Icon name="email-outline" size={20} color="primary" />
               </View>
               <View style={commonStyles.flex}>
@@ -232,7 +237,7 @@ export default function ExampleScreen() {
 
         <View style={commonStyles.rowSpaceBetween}>
           <View style={commonStyles.rowWithFlex}>
-            <View style={commonStyles.iconContainerMd}>
+            <View style={styles.iconContainerMd}>
               <Icon name="lock-reset" size={20} color="primary" />
             </View>
             <View style={commonStyles.flex}>
@@ -256,7 +261,7 @@ export default function ExampleScreen() {
         {/* Privacidad */}
         <View style={commonStyles.rowSpaceBetween}>
           <View style={commonStyles.rowWithFlex}>
-            <View style={commonStyles.iconContainerMd}>
+            <View style={styles.iconContainerMd}>
               <Icon name="shield-account" size={20} color="primary" />
             </View>
             <View style={commonStyles.flex}>
@@ -281,7 +286,7 @@ export default function ExampleScreen() {
         <Card shadow="md" onPress={() => {}}>
           <View style={commonStyles.rowSpaceBetween}>
             <View style={commonStyles.rowWithFlex}>
-              <View style={commonStyles.iconContainerMd}>
+              <View style={styles.iconContainerMd}>
                 <Icon name="logout" size={20} color="error" />
               </View>
               <View style={commonStyles.flex}>
@@ -325,3 +330,24 @@ export default function ExampleScreen() {
 
 // Estilos mínimos requeridos - la mayoría se manejan con componentes
 // No se requiere StyleSheet.create() adicional
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    width: horizontalScale(24),
+    height: verticalScale(24),
+    borderRadius: horizontalScale(20),
+    backgroundColor: theme.colors.surface,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: theme.spacing.sm,
+  },
+  iconContainerMd: {
+    width: horizontalScale(28),
+    height: verticalScale(28),
+    borderRadius: horizontalScale(20),
+    backgroundColor: theme.colors.surface,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: theme.spacing.md,
+  },
+});

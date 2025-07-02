@@ -5,11 +5,17 @@ import { SPACING } from './spacing';
 import { SHADOWS } from './shadows';
 
 export const commonStyles = StyleSheet.create({
+  // Layout styles
   flex: { flex: 1 },
-  ph0: { paddingHorizontal: 0 },
-  centerContainer: {
-    justifyContent: 'center',
+  rowSpaceBetween: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  rowWithFlex: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
   },
   row: {
     flexDirection: 'row',
@@ -21,26 +27,33 @@ export const commonStyles = StyleSheet.create({
   alignCenter: {
     alignItems: 'center',
   },
+  centerContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   fullWidth: {
     width: '100%',
   },
+  // Paddings
+  ph0: { paddingHorizontal: 0 },
   padding: {
-    padding: horizontalScale(16),
+    padding: horizontalScale(SPACING.md),
   },
   paddingHorizontal: {
-    paddingHorizontal: horizontalScale(16),
+    paddingHorizontal: horizontalScale(SPACING.md),
   },
   paddingVertical: {
-    paddingVertical: verticalScale(16),
+    paddingVertical: verticalScale(SPACING.md),
   },
+  // Margins
   margin: {
-    margin: horizontalScale(16),
+    margin: horizontalScale(SPACING.md),
   },
   marginHorizontal: {
-    marginHorizontal: horizontalScale(16),
+    marginHorizontal: horizontalScale(SPACING.md),
   },
   marginVertical: {
-    marginVertical: verticalScale(16),
+    marginVertical: verticalScale(SPACING.md),
   },
   // Card styles
   card: {
@@ -48,35 +61,5 @@ export const commonStyles = StyleSheet.create({
     backgroundColor: COLORS.surface,
     borderRadius: SPACING.md,
     padding: SPACING.md,
-  },
-  // Icon container styles
-  iconContainer: {
-    width: horizontalScale(24),
-    height: verticalScale(24),
-    borderRadius: horizontalScale(20),
-    backgroundColor: COLORS.surface,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: SPACING.sm,
-  },
-  iconContainerMd: {
-    width: horizontalScale(28),
-    height: verticalScale(28),
-    borderRadius: horizontalScale(20),
-    backgroundColor: COLORS.surface,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: SPACING.md,
-  },
-  // Layout styles
-  rowSpaceBetween: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  rowWithFlex: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
   },
 });

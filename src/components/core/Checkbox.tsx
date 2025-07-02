@@ -29,11 +29,11 @@ export default function Checkbox({
           <Icon
             name={selected ? 'checkbox-outline' : 'checkbox-blank-outline'}
             size={SPACING.lg}
-            color={color}
+            color={error ? 'error' : color}
           />
         </TouchableOpacity>
         <Margin right={4} />
-        <Text title={title} color={color} />
+        <Text title={title} />
       </View>
       {error && (
         <Margin top={4}>
