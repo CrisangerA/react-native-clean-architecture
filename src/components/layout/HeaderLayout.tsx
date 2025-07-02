@@ -65,10 +65,7 @@ export default function ProductHeader({
         style={[styles.categoryChip, isSelected && styles.categoryChipActive]}
         onPress={() => onCategorySelect?.(category.id)}
       >
-        <Text
-          font="bodyMedium"
-          color={isSelected ? 'onPrimary' : 'onSurfaceVariant'}
-        >
+        <Text font="bodyMedium" color={isSelected ? 'onPrimary' : 'onSurface'}>
           {category.name}
         </Text>
       </TouchableOpacity>
@@ -84,7 +81,7 @@ export default function ProductHeader({
             {title}
           </Text>
           {subtitle && (
-            <Text font="bodyRegular" color="onSurfaceVariant">
+            <Text font="bodyRegular" color="onSurface">
               {subtitle}
             </Text>
           )}
@@ -94,7 +91,7 @@ export default function ProductHeader({
           {/* View Mode Toggle */}
           {showViewModeToggle && onViewModeChange && (
             <IconButton
-              type="surface"
+              type="default"
               icon={viewMode === 'grid' ? 'view-list' : 'view-grid'}
               size={20}
               onPress={() =>
@@ -136,7 +133,7 @@ const styles = StyleSheet.create({
     paddingBottom: verticalScale(16),
     backgroundColor: theme.colors.surface,
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.outlineVariant,
+    borderBottomColor: theme.colors.surface,
   },
   headerTop: {
     paddingHorizontal: horizontalScale(16),
@@ -162,9 +159,9 @@ const styles = StyleSheet.create({
     paddingVertical: verticalScale(8),
     marginRight: horizontalScale(8),
     borderRadius: normalize(20),
-    backgroundColor: theme.colors.surfaceVariant,
+    backgroundColor: theme.colors.surface,
     borderWidth: 1,
-    borderColor: theme.colors.outline,
+    borderColor: theme.colors.onSurface,
   },
   categoryChipActive: {
     backgroundColor: theme.colors.primary,

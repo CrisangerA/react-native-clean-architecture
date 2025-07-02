@@ -18,6 +18,9 @@ export const commonStyles = StyleSheet.create({
   spaceBetween: {
     justifyContent: 'space-between',
   },
+  alignCenter: {
+    alignItems: 'center',
+  },
   fullWidth: {
     width: '100%',
   },
@@ -45,5 +48,35 @@ export const commonStyles = StyleSheet.create({
     backgroundColor: COLORS.surface,
     borderRadius: SPACING.md,
     padding: SPACING.md,
+  },
+  // Icon container styles
+  iconContainer: {
+    width: horizontalScale(24),
+    height: verticalScale(24),
+    borderRadius: horizontalScale(20),
+    backgroundColor: COLORS.surface,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: SPACING.sm,
+  },
+  iconContainerMd: {
+    width: horizontalScale(28),
+    height: verticalScale(28),
+    borderRadius: horizontalScale(20),
+    backgroundColor: COLORS.surface,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: SPACING.md,
+  },
+  // Layout styles
+  rowSpaceBetween: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  rowWithFlex: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
   },
 });

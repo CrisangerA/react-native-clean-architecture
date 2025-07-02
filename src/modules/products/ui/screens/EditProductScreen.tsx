@@ -196,7 +196,7 @@ export default function EditProductScreen() {
           <Text font="headlineMedium">Editar Producto</Text>
           <Button
             title="Cancelar"
-            type="outline"
+            variant="outline"
             onPress={handleCancel}
             icon="close"
           />
@@ -213,7 +213,7 @@ export default function EditProductScreen() {
             {isDirty && (
               <Button
                 title="Restablecer"
-                type="outline"
+                variant="outline"
                 onPress={handleReset}
                 icon="refresh"
               />
@@ -316,7 +316,7 @@ export default function EditProductScreen() {
           <Margin top={theme.spacing.md} />
           <Button
             title="Cancelar"
-            type="outline"
+            variant="outline"
             onPress={handleCancel}
             icon="close"
           />

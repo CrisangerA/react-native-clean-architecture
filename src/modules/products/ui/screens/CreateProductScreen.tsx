@@ -230,7 +230,7 @@ export default function CreateProductScreen() {
           <Margin top={theme.spacing.md} />
           <Button
             title="Cancelar"
-            type="outline"
+            variant="outline"
             onPress={handleCancel}
             icon="close"
           />

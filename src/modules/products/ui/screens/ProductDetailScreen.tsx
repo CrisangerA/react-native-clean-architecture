@@ -80,7 +80,7 @@ export default function ProductDetailScreen() {
         <View style={styles.header}>
           <Button
             title="Volver"
-            type="outline"
+            variant="outline"
             onPress={goBack}
             icon="arrow-left"
           />
@@ -136,7 +136,7 @@ export default function ProductDetailScreen() {
                 Categoría
               </Text>
             </View>
-            <Text font="bodyRegular" color="onSurfaceVariant">
+            <Text font="bodyRegular" color="onSurface">
               {mockProduct.category}
             </Text>
           </View>
@@ -152,7 +152,7 @@ export default function ProductDetailScreen() {
                 Stock
               </Text>
             </View>
-            <Text font="bodyRegular" color="onSurfaceVariant">
+            <Text font="bodyRegular" color="onSurface">
               {mockProduct.stock} unidades
             </Text>
           </View>
@@ -191,7 +191,7 @@ export default function ProductDetailScreen() {
                 Creado
               </Text>
             </View>
-            <Text font="bodyRegular" color="onSurfaceVariant">
+            <Text font="bodyRegular" color="onSurface">
               {formatDate(mockProduct.createdAt)}
             </Text>
           </View>
@@ -207,7 +207,7 @@ export default function ProductDetailScreen() {
                 Actualizado
               </Text>
             </View>
-            <Text font="bodyRegular" color="onSurfaceVariant">
+            <Text font="bodyRegular" color="onSurface">
               {formatDate(mockProduct.updatedAt)}
             </Text>
           </View>
@@ -226,7 +226,7 @@ export default function ProductDetailScreen() {
           <Margin top={theme.spacing.md} />
           <Button
             title="Eliminar Producto"
-            type="outline"
+            variant="outline"
             onPress={handleDeleteProduct}
             icon="delete"
           />
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: theme.spacing.sm,
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.outline,
+    borderBottomColor: theme.colors.shadow,
   },
   detailLabel: {
     flexDirection: 'row',

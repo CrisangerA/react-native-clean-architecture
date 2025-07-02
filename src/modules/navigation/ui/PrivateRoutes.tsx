@@ -60,7 +60,13 @@ const slideAnimationOptions = {
 
 export default function PrivateRoutesStack() {
   const tabBarIcon = React.useCallback(
-    (name: string) => <Icon name={name} size={SPACING.lg} />,
+    (name: string, focused: boolean) => (
+      <Icon
+        name={name}
+        size={SPACING.lg}
+        color={focused ? 'primary' : 'text'}
+      />
+    ),
     [],
   );
 
@@ -72,9 +78,10 @@ export default function PrivateRoutesStack() {
         tabBarStyle: {
           backgroundColor: theme.colors.background,
         },
-        tabBarIcon: () => tabBarIcon(ICONS_PRIVATE_NAV[route.name]),
+        tabBarIcon: ({ focused }) =>
+          tabBarIcon(ICONS_PRIVATE_NAV[route.name], focused),
         tabBarActiveTintColor: theme.colors.primary,
-        tabBarInactiveTintColor: theme.colors.outline,
+        tabBarInactiveTintColor: theme.colors.text,
       })}
     >
       <Tab.Screen

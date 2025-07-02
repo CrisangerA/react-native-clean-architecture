@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import { BaseLayout } from '@components/layout';
 import {
   Avatar,
@@ -12,7 +12,7 @@ import {
   Text,
   TextInput,
 } from '@components/core';
-import { theme } from '@theme/index';
+import { commonStyles, theme } from '@theme/index';
 
 /**
  * Pantalla de perfil de usuario que muestra información personal
@@ -39,9 +39,10 @@ export default function ExampleScreen() {
   return (
     <BaseLayout scrollable>
       <Margin top={theme.spacing.md} />
+
       {/* Cabecera del perfil */}
       <Card>
-        <View style={[styles.header, styles.headerCard]}>
+        <View style={commonStyles.alignCenter}>
           <Avatar source={{ uri: 'https://i.pravatar.cc/300' }} type="card" />
           <Margin top={theme.spacing.md} />
           <Text
@@ -55,17 +56,18 @@ export default function ExampleScreen() {
             title="Desarrollador Mobile"
             font="bodyMedium"
             align="center"
-            color="onSurfaceVariant"
+            color="textSecondary"
           />
           {!isEditing && (
-            <TouchableOpacity
-              style={styles.editButton}
-              onPress={() => setIsEditing(true)}
-            >
-              <Icon name="pencil" size={16} color="primary" />
-              <Margin left={theme.spacing.xs} />
-              <Text title="Editar perfil" font="labelMedium" color="primary" />
-            </TouchableOpacity>
+            <Margin top={theme.spacing.md}>
+              <Button
+                title="Editar perfil"
+                icon="pencil"
+                variant="outline"
+                type="secondary"
+                onPress={() => setIsEditing(true)}
+              />
+            </Margin>
           )}
         </View>
       </Card>
@@ -73,7 +75,7 @@ export default function ExampleScreen() {
       <Margin top={theme.spacing.md} />
 
       {/* Información personal */}
-      <Card title="Información personal">
+      <Card title="Información personal" titleColor="onSurface">
         {isEditing ? (
           <>
             <TextInput
@@ -105,48 +107,54 @@ export default function ExampleScreen() {
               onChangeText={setBio}
               multiline
               numberOfLines={4}
-              style={styles.bioInput}
             />
           </>
         ) : (
           <>
-            <View style={styles.infoSection}>
-              <View style={styles.infoRow}>
-                <View style={styles.iconContainer}>
+            {/* Email */}
+            <Card shadow="md">
+              <View style={commonStyles.row}>
+                <View style={commonStyles.iconContainer}>
                   <Icon name="email" size={20} color="primary" />
                 </View>
-                <View style={styles.infoContent}>
+                <View style={commonStyles.flex}>
                   <Text
                     title="Correo electrónico"
                     font="labelMedium"
-                    color="onSurfaceVariant"
+                    color="textSecondary"
                   />
                   <Text title={email} font="bodyMedium" color="onSurface" />
                 </View>
               </View>
-              <Margin top={theme.spacing.md} />
-              <View style={styles.infoRow}>
-                <View style={styles.iconContainer}>
+            </Card>
+
+            <Margin top={theme.spacing.sm} />
+
+            {/* Phone */}
+            <Card shadow="md">
+              <View style={commonStyles.row}>
+                <View style={commonStyles.iconContainer}>
                   <Icon name="phone" size={20} color="primary" />
                 </View>
-                <View style={styles.infoContent}>
+                <View style={commonStyles.flex}>
                   <Text
                     title="Teléfono"
                     font="labelMedium"
-                    color="onSurfaceVariant"
+                    color="textSecondary"
                   />
                   <Text title={phone} font="bodyMedium" color="onSurface" />
                 </View>
               </View>
-            </View>
-            <Margin top={theme.spacing.lg} />
-            <View style={styles.bioSection}>
-              <Text title="Biografía" font="titleSMedium" color="onSurface" />
-              <Margin top={theme.spacing.sm} />
-              <View style={styles.bioContainer}>
-                <Text title={bio} font="bodyRegular" color="onSurfaceVariant" />
-              </View>
-            </View>
+            </Card>
+
+            <Margin top={theme.spacing.md} />
+
+            {/* Biography */}
+            <Text title="Biografía" font="titleSMedium" color="onSurface" />
+            <Margin top={theme.spacing.sm} />
+            <Card shadow="md">
+              <Text title={bio} font="bodyRegular" color="onSurface" />
+            </Card>
           </>
         )}
       </Card>
@@ -155,12 +163,14 @@ export default function ExampleScreen() {
 
       {/* Preferencias */}
       <Card title="Preferencias" titleColor="onSurface">
-        <View style={styles.preferencesSection}>
-          <View style={styles.preferenceItem}>
-            <View style={styles.preferenceContent}>
-              <Icon name="bell" size={20} color="primary" />
-              <Margin left={theme.spacing.sm} />
-              <View style={styles.preferenceText}>
+        {/* Notificaciones */}
+        <Card shadow="md">
+          <View>
+            <View style={commonStyles.rowWithFlex}>
+              <View style={commonStyles.iconContainer}>
+                <Icon name="bell" size={20} color="primary" />
+              </View>
+              <View style={commonStyles.flex}>
                 <Text
                   title="Notificaciones push"
                   font="bodyMedium"
@@ -169,7 +179,7 @@ export default function ExampleScreen() {
                 <Text
                   title="Recibir alertas en tiempo real"
                   font="bodySRegular"
-                  color="onSurfaceVariant"
+                  color="textSecondary"
                 />
               </View>
             </View>
@@ -180,12 +190,18 @@ export default function ExampleScreen() {
               color="primary"
             />
           </View>
-          <Margin top={theme.spacing.md} />
-          <View style={styles.preferenceItem}>
-            <View style={styles.preferenceContent}>
-              <Icon name="email-outline" size={20} color="primary" />
-              <Margin left={theme.spacing.sm} />
-              <View style={styles.preferenceText}>
+        </Card>
+
+        <Margin top={theme.spacing.sm} />
+
+        {/* Emails */}
+        <Card shadow="md">
+          <View>
+            <View style={commonStyles.rowWithFlex}>
+              <View style={commonStyles.iconContainer}>
+                <Icon name="email-outline" size={20} color="primary" />
+              </View>
+              <View style={commonStyles.flex}>
                 <Text
                   title="Correos promocionales"
                   font="bodyMedium"
@@ -194,120 +210,110 @@ export default function ExampleScreen() {
                 <Text
                   title="Ofertas y novedades por email"
                   font="bodySRegular"
-                  color="onSurfaceVariant"
+                  color="textSecondary"
                 />
               </View>
             </View>
             <Checkbox
-              title="Modo oscuro"
+              title="Correos promocionales"
               selected={receiveEmails}
               onChange={setReceiveEmails}
               color="primary"
             />
           </View>
-        </View>
+        </Card>
       </Card>
 
       <Margin top={theme.spacing.md} />
 
       {/* Acciones */}
-      <Card title="Acciones">
-        <View style={styles.actionsSection}>
-          <TouchableOpacity style={styles.actionItem}>
-            <View style={styles.actionContent}>
-              <View style={styles.actionIconContainer}>
-                <Icon name="lock-reset" size={20} color="primary" />
-              </View>
-              <View style={styles.actionText}>
-                <Text
-                  title="Cambiar contraseña"
-                  font="bodyMedium"
-                  color="onSurface"
-                />
-                <Text
-                  title="Actualizar credenciales de acceso"
-                  font="bodySRegular"
-                  color="onSurfaceVariant"
-                />
-              </View>
+      <Card title="Acciones" titleColor="onSurface">
+        {/* Cambiar contraseña */}
+
+        <View style={commonStyles.rowSpaceBetween}>
+          <View style={commonStyles.rowWithFlex}>
+            <View style={commonStyles.iconContainerMd}>
+              <Icon name="lock-reset" size={20} color="primary" />
             </View>
-            <IconButton
-              icon="chevron-right"
-              onPress={() => {}}
-              type="surface"
-              size={16}
-            />
-          </TouchableOpacity>
-          <View style={styles.divider} />
-          <TouchableOpacity style={styles.actionItem}>
-            <View style={styles.actionContent}>
-              <View style={styles.actionIconContainer}>
-                <Icon name="shield-account" size={20} color="primary" />
-              </View>
-              <View style={styles.actionText}>
-                <Text
-                  title="Privacidad y seguridad"
-                  font="bodyMedium"
-                  color="onSurface"
-                />
-                <Text
-                  title="Gestionar datos personales"
-                  font="bodySRegular"
-                  color="onSurfaceVariant"
-                />
-              </View>
+            <View style={commonStyles.flex}>
+              <Text
+                title="Cambiar contraseña"
+                font="bodyMedium"
+                color="onSurface"
+              />
+              <Text
+                title="Actualizar credenciales de acceso"
+                font="bodySRegular"
+                color="textSecondary"
+              />
             </View>
-            <IconButton
-              icon="chevron-right"
-              onPress={() => {}}
-              type="surface"
-              size={16}
-            />
-          </TouchableOpacity>
-          <View style={styles.divider} />
-          <TouchableOpacity style={styles.actionItem}>
-            <View style={styles.actionContent}>
-              <View
-                style={[styles.actionIconContainer, styles.logoutIconContainer]}
-              >
+          </View>
+          <IconButton icon="chevron-right" onPress={() => {}} size={16} />
+        </View>
+
+        <Margin top={theme.spacing.sm} />
+
+        {/* Privacidad */}
+        <View style={commonStyles.rowSpaceBetween}>
+          <View style={commonStyles.rowWithFlex}>
+            <View style={commonStyles.iconContainerMd}>
+              <Icon name="shield-account" size={20} color="primary" />
+            </View>
+            <View style={commonStyles.flex}>
+              <Text
+                title="Privacidad y seguridad"
+                font="bodyMedium"
+                color="onSurface"
+              />
+              <Text
+                title="Gestionar datos personales"
+                font="bodySRegular"
+                color="textSecondary"
+              />
+            </View>
+          </View>
+          <IconButton icon="chevron-right" onPress={() => {}} size={16} />
+        </View>
+
+        <Margin top={theme.spacing.sm} />
+
+        {/* Cerrar sesión */}
+        <Card shadow="md" onPress={() => {}}>
+          <View style={commonStyles.rowSpaceBetween}>
+            <View style={commonStyles.rowWithFlex}>
+              <View style={commonStyles.iconContainerMd}>
                 <Icon name="logout" size={20} color="error" />
               </View>
-              <View style={styles.actionText}>
+              <View style={commonStyles.flex}>
                 <Text title="Cerrar sesión" font="bodyMedium" color="error" />
                 <Text
                   title="Salir de la aplicación"
                   font="bodySRegular"
-                  color="onSurfaceVariant"
+                  color="textSecondary"
                 />
               </View>
             </View>
-            <IconButton
-              icon="chevron-right"
-              onPress={() => {}}
-              type="surface"
-              size={16}
-            />
-          </TouchableOpacity>
-        </View>
+            <IconButton icon="chevron-right" onPress={() => {}} size={16} />
+          </View>
+        </Card>
       </Card>
 
       {/* Botones de guardar/cancelar en modo edición */}
       {isEditing && (
         <>
           <Margin top={theme.spacing.md} />
-          <View style={styles.actionButtons}>
-            <Button
-              title="Cancelar"
-              type="outline"
-              onPress={() => setIsEditing(false)}
-              style={styles.actionButton}
-            />
+          <View style={commonStyles.row}>
+            <View style={commonStyles.flex}>
+              <Button
+                title="Cancelar"
+                variant="outline"
+                onPress={() => setIsEditing(false)}
+              />
+            </View>
             <Margin left={theme.spacing.md} />
-            <Button
-              title="Guardar cambios"
-              onPress={handleSaveProfile}
-              style={styles.actionButton}
-            />
+            <View style={commonStyles.flex}>
+              <Button title="Guardar cambios" onPress={handleSaveProfile} />
+            </View>
           </View>
         </>
       )}
@@ -317,115 +323,5 @@ export default function ExampleScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  headerCard: {
-    backgroundColor: theme.colors.surface,
-    borderRadius: theme.spacing.lg,
-    padding: theme.spacing.lg,
-  },
-  header: {
-    alignItems: 'center',
-    paddingVertical: theme.spacing.sm,
-  },
-  editButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: theme.spacing.md,
-    paddingHorizontal: theme.spacing.sm,
-    paddingVertical: theme.spacing.xs,
-    borderRadius: theme.spacing.sm,
-    backgroundColor: theme.colors.primaryContainer,
-  },
-  infoSection: {
-    marginVertical: theme.spacing.xs,
-  },
-  infoRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-  },
-  iconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: theme.colors.primaryContainer,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: theme.spacing.sm,
-  },
-  infoContent: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  bioSection: {
-    marginTop: theme.spacing.sm,
-  },
-  bioContainer: {
-    backgroundColor: theme.colors.surfaceVariant,
-    borderRadius: theme.spacing.sm,
-    padding: theme.spacing.md,
-    borderLeftWidth: 3,
-    borderLeftColor: theme.colors.primary,
-  },
-  bioInput: {
-    height: 100,
-    textAlignVertical: 'top',
-  },
-  preferencesSection: {
-    marginVertical: theme.spacing.xs,
-  },
-  preferenceItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: theme.spacing.sm,
-  },
-  preferenceContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
-  },
-  preferenceText: {
-    flex: 1,
-  },
-  actionsSection: {
-    marginVertical: theme.spacing.xs,
-  },
-  actionItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: theme.spacing.md,
-  },
-  actionContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
-  },
-  actionIconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: theme.colors.primaryContainer,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: theme.spacing.md,
-  },
-  logoutIconContainer: {
-    backgroundColor: theme.colors.errorContainer,
-  },
-  actionText: {
-    flex: 1,
-  },
-  divider: {
-    height: 1,
-    backgroundColor: theme.colors.outlineVariant,
-    marginVertical: theme.spacing.xs,
-  },
-  actionButtons: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  actionButton: {
-    flex: 1,
-  },
-});
+// Estilos mínimos requeridos - la mayoría se manejan con componentes
+// No se requiere StyleSheet.create() adicional

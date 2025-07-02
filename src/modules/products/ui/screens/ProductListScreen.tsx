@@ -120,11 +120,7 @@ export default function ProductListScreen() {
     return (
       <View style={styles.ratingContainer}>
         {stars}
-        <Text
-          font="bodySRegular"
-          color="onSurfaceVariant"
-          style={styles.ratingText}
-        >
+        <Text font="bodySRegular" color="onSurface" style={styles.ratingText}>
           {rating}
         </Text>
       </View>
@@ -177,7 +173,7 @@ export default function ProductListScreen() {
             ${item.price}
           </Text>
           <View style={styles.stockBadge}>
-            <Text font="bodySRegular" color="onSurfaceVariant">
+            <Text font="bodySRegular" color="onSurface">
               {item.stock}
             </Text>
           </View>
@@ -216,7 +212,7 @@ export default function ProductListScreen() {
         </View>
 
         <Margin top={theme.spacing.xs} />
-        <Text font="bodyRegular" color="onSurfaceVariant" numberOfLines={2}>
+        <Text font="bodyRegular" color="onSurface" numberOfLines={2}>
           {item.description}
         </Text>
 
@@ -240,10 +236,10 @@ export default function ProductListScreen() {
               <Icon name="pencil" size={16} color="primary" />
             </TouchableOpacity>
             <View style={styles.stockInfo}>
-              <Icon name="package-variant" size={14} color="onSurfaceVariant" />
+              <Icon name="package-variant" size={14} color="onSurface" />
               <Text
                 font="bodySRegular"
-                color="onSurfaceVariant"
+                color="onSurface"
                 style={styles.stockText}
               >
                 {item.stock}
@@ -268,7 +264,7 @@ export default function ProductListScreen() {
         No hay productos
       </Text>
       <Margin top={theme.spacing.md} />
-      <Text font="bodyRegular" color="onSurfaceVariant" align="center">
+      <Text font="bodyRegular" color="onSurface" align="center">
         Comienza agregando tu primer producto para tu jardín
       </Text>
       <Margin top={theme.spacing.lg} />
@@ -400,7 +396,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   stockBadge: {
-    backgroundColor: theme.colors.primaryContainer,
+    backgroundColor: theme.colors.primary,
     paddingHorizontal: horizontalScale(8),
     paddingVertical: verticalScale(2),
     borderRadius: normalize(8),
@@ -449,7 +445,7 @@ const styles = StyleSheet.create({
     width: horizontalScale(32),
     height: verticalScale(32),
     borderRadius: normalize(16),
-    backgroundColor: theme.colors.primaryContainer,
+    backgroundColor: theme.colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -472,7 +468,7 @@ const styles = StyleSheet.create({
     width: horizontalScale(80),
     height: verticalScale(80),
     borderRadius: normalize(40),
-    backgroundColor: theme.colors.primaryContainer,
+    backgroundColor: theme.colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
   },
