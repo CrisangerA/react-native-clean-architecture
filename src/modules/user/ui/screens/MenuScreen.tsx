@@ -12,31 +12,22 @@ export default function MenuScreen() {
       <Text
         title="React Native Simple Template"
         font="headlineMedium"
-        color="onSurface"
+        color="primary"
       />
       <Margin top={theme.spacing.xl} />
       <Card
         title="Componentes"
         onPress={() => navigate(ExampleRoutes.Components)}
       >
-        <Text
-          title="Aqui encontraras todos los componentes dispoinibles para utilizar en la app"
-          color="shadow"
-        />
+        <Text title="Aqui encontraras todos los componentes dispoinibles para utilizar en la app" />
       </Card>
       <Margin top={theme.spacing.lg} />
       <Card title="Formularios" onPress={() => navigate(ExampleRoutes.Form)}>
-        <Text
-          title="Ejemplos de formularios con validaciones y diferentes campos de texto"
-          color="shadow"
-        />
+        <Text title="Ejemplos de formularios con validaciones y diferentes campos de texto" />
       </Card>
       <Margin top={theme.spacing.lg} />
       <Card title="Vistas" onPress={() => navigate(ExampleRoutes.Screen)}>
-        <Text
-          title="Diferentes vistas que puedes hacer con estos componentes"
-          color="shadow"
-        />
+        <Text title="Diferentes vistas que puedes hacer con estos componentes" />
       </Card>
       <Margin top={theme.spacing.xxl} />
     </BaseLayout>
