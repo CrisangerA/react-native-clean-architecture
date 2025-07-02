@@ -5,13 +5,15 @@ import Icon from './Icon';
 import { Text } from './index';
 // Theme
 import { Color } from '@theme/index';
-import { BUTTON_STYLES, ButtonType } from '@theme/components';
+import { ButtonType, getButtonStyles } from '@theme/components';
 
-interface ButtonProps extends TouchableOpacityProps {
+export interface ButtonProps extends TouchableOpacityProps {
   onPress: () => void;
   title: string;
   type?: keyof ButtonType;
   isLoading?: boolean;
+  color?: keyof Color;
+  variant?: 'default' | 'outline';
   // Icon
   icon?: string;
   iconPosition?: 'left' | 'right';
@@ -25,19 +27,16 @@ interface ButtonProps extends TouchableOpacityProps {
  * @param {keyof ButtonType} [props.type='primary'] - Button style variant
  * @returns {JSX.Element} A touchable button component
  */
-export default function Button({
-  onPress,
-  title,
-  type = 'primary',
-  isLoading,
-  disabled,
-  icon,
-  iconPosition = 'left',
-}: ButtonProps) {
-  if (isLoading || disabled) {
-    type = 'disabled';
-  }
-  const styles = BUTTON_STYLES[type];
+export default function Button(props: ButtonProps) {
+  const {
+    onPress,
+    title,
+    isLoading,
+    disabled,
+    icon,
+    iconPosition = 'left',
+  } = props;
+  const styles = getButtonStyles(props);
 
   return (
     <TouchableOpacity
@@ -50,7 +49,11 @@ export default function Button({
           <Icon name={icon} color={styles.text.color as keyof Color} />
         </View>
       )}
-      <Text title={title} style={styles.text} />
+      <Text
+        title={title}
+        style={styles.text}
+        color={styles.text.color as keyof Color}
+      />
       {icon && iconPosition === 'right' && (
         <View>
           <Icon name={icon} color={styles.text.color as keyof Color} />

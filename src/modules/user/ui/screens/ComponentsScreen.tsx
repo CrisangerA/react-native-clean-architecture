@@ -58,7 +58,11 @@ export default function ComponentsScreen() {
           font="bodyMedium"
         />
         <Text title="Texto con color de error" color="error" />
-        <Text title="Texto subrayado" underline font="bodyRegular" />
+        <Text
+          title="Texto subrayado"
+          textDecoration="underline"
+          font="bodyRegular"
+        />
       </Card>
 
       <Margin top={theme.spacing.md} />
@@ -67,23 +71,44 @@ export default function ComponentsScreen() {
       <Card title="Botones">
         <Button title="Botón Primario" onPress={() => {}} />
         <Margin top={theme.spacing.sm} />
-        <Button title="Botón Secundario" type="secondary" onPress={() => {}} />
-        <Margin top={theme.spacing.sm} />
         <Button
-          title="Botón Outline"
-          type="outline"
+          title="Botón Secundario"
+          type="secondary"
           onPress={() => {}}
           icon="home"
-          iconPosition="left"
         />
         <Margin top={theme.spacing.sm} />
         <Button
           title="Botón Deshabilitado"
-          type="disabled"
           onPress={() => {}}
           disabled
           icon="home"
           iconPosition="right"
+        />
+        <Margin top={theme.spacing.sm} />
+        <Button
+          title="Botón Outline"
+          variant="outline"
+          onPress={() => {}}
+          icon="home"
+        />
+        <Margin top={theme.spacing.sm} />
+        <Button
+          title="Outline Secondary"
+          variant="outline"
+          onPress={() => {}}
+          icon="home"
+          iconPosition="right"
+          type="secondary"
+        />
+        <Margin top={theme.spacing.sm} />
+        <Button
+          title="Disable Outline"
+          variant="outline"
+          onPress={() => {}}
+          icon="home"
+          iconPosition="left"
+          disabled
         />
       </Card>
 
@@ -104,14 +129,7 @@ export default function ComponentsScreen() {
             <IconButton icon="magnify" onPress={() => {}} type="secondary" />
             <Text title="Secondary" font="labelSRegular" align="center" />
           </View>
-          <View style={styles.iconButtonItem}>
-            <IconButton
-              icon="calendar-blank"
-              onPress={() => {}}
-              type="surface"
-            />
-            <Text title="Surface" font="labelSRegular" align="center" />
-          </View>
+
           <View style={styles.iconButtonItem}>
             <IconButton
               icon="close"
@@ -120,38 +138,6 @@ export default function ComponentsScreen() {
               disabled
             />
             <Text title="Disabled" font="labelSRegular" align="center" />
-          </View>
-        </View>
-        <Margin top={theme.spacing.sm} />
-        <Text title="Tamaños disponibles:" font="bodyBold" />
-        <Margin top={theme.spacing.xs} />
-        <View style={styles.iconButtonSizesContainer}>
-          <View style={styles.iconButtonItem}>
-            <IconButton
-              icon="heart"
-              onPress={() => {}}
-              type="primary"
-              size={14}
-            />
-            <Text title="Small (14)" font="labelSRegular" align="center" />
-          </View>
-          <View style={styles.iconButtonItem}>
-            <IconButton
-              icon="heart"
-              onPress={() => {}}
-              type="primary"
-              size={24}
-            />
-            <Text title="Medium (24)" font="labelSRegular" align="center" />
-          </View>
-          <View style={styles.iconButtonItem}>
-            <IconButton
-              icon="heart"
-              onPress={() => {}}
-              type="primary"
-              size={40}
-            />
-            <Text title="Large (40)" font="labelSRegular" align="center" />
           </View>
         </View>
       </Card>
@@ -178,6 +164,7 @@ export default function ComponentsScreen() {
           placeholder="Contraseña"
           iconRight="eye"
           secureTextEntry
+          type="focus"
         />
         <Margin top={theme.spacing.sm} />
         <TextInput
@@ -185,6 +172,7 @@ export default function ComponentsScreen() {
           placeholder="Email"
           error="El email no es válido"
           value="correo@invalido"
+          iconRight="email"
         />
         <Margin top={theme.spacing.sm} />
         <TextInput
@@ -192,6 +180,7 @@ export default function ComponentsScreen() {
           placeholder="No editable"
           value="Valor no editable"
           editable={false}
+          iconLeft="email"
         />
       </Card>
 
@@ -268,7 +257,7 @@ export default function ComponentsScreen() {
             <Text title="account" font="labelSRegular" />
           </View>
           <View style={styles.iconItem}>
-            <Icon name="calendar-blank" size={24} color="tertiary" />
+            <Icon name="calendar-blank" size={24} />
             <Text title="calendar" font="labelSRegular" />
           </View>
           <View style={styles.iconItem}>

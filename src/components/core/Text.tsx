@@ -9,7 +9,7 @@ import { TEXT_STYLES, FontStyle } from '@theme/components';
 
 export interface TextProps extends RNTextProps {
   title?: string;
-  underline?: boolean;
+  textDecoration?: TextStyle['textDecorationLine'];
   font?: keyof FontStyle;
   color?: keyof Color;
   align?: TextStyle['textAlign'];
@@ -19,25 +19,25 @@ export interface TextProps extends RNTextProps {
 export default function Text({
   title,
   font = 'bodyRegular',
-  color = 'primary',
+  color = 'text',
   align,
-  underline,
+  textDecoration,
   textTransform,
   children,
-  style,
+  style: overrideStyle,
   ...props
 }: PropsWithChildren<TextProps>) {
   const finalColor = getColor(color);
 
-  const _textStyles: TextStyle = {
+  const customStyles: TextStyle = {
     color: finalColor,
-    textAlign: align,
-    ...(textTransform && { textTransform }),
-    ...(underline && { textDecorationLine: 'underline' }),
+    textTransform,
+    ...(align && { textAlign: align }),
+    ...(textDecoration && { textDecorationLine: textDecoration }),
   };
 
   const textStyle = TEXT_STYLES[font];
-  const textStyles = [textStyle, _textStyles, style];
+  const textStyles = [textStyle, customStyles, overrideStyle];
 
   if (children) {
     return (

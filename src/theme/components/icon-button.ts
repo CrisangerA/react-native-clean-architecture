@@ -4,6 +4,7 @@ import { theme } from '@theme/index';
 import { commonStyles } from '@theme/common';
 import { normalize } from '@theme/responsive';
 import { Color } from '@theme/colors';
+import { IconButtonProps } from '@components/core';
 
 export type IconButtonType = {
   default: {
@@ -15,10 +16,6 @@ export type IconButtonType = {
     iconColor: keyof Color;
   };
   secondary: {
-    container: ViewStyle;
-    iconColor: keyof Color;
-  };
-  surface: {
     container: ViewStyle;
     iconColor: keyof Color;
   };
@@ -36,7 +33,10 @@ const baseStyle: ViewStyle = {
   minHeight: normalize(40),
 };
 
-export const ICON_BUTTON_STYLES: Record<keyof IconButtonType, { container: ViewStyle; iconColor: keyof Color }> = {
+export const ICON_BUTTON_STYLES: Record<
+  keyof IconButtonType,
+  { container: ViewStyle; iconColor: keyof Color }
+> = {
   default: {
     container: {
       ...baseStyle,
@@ -47,30 +47,29 @@ export const ICON_BUTTON_STYLES: Record<keyof IconButtonType, { container: ViewS
   primary: {
     container: {
       ...baseStyle,
-      backgroundColor: theme.colors.primaryContainer,
+      backgroundColor: theme.colors.primary,
     },
-    iconColor: 'onPrimaryContainer',
+    iconColor: 'onPrimary',
   },
   secondary: {
     container: {
       ...baseStyle,
-      backgroundColor: theme.colors.secondaryContainer,
+      backgroundColor: theme.colors.secondary,
     },
-    iconColor: 'onSecondaryContainer',
-  },
-  surface: {
-    container: {
-      ...baseStyle,
-      backgroundColor: theme.colors.surfaceVariant,
-    },
-    iconColor: 'onSurface',
+    iconColor: 'onSecondary',
   },
   disabled: {
     container: {
       ...baseStyle,
-      backgroundColor: theme.colors.surfaceVariant,
+      backgroundColor: theme.colors.disabled,
       opacity: 0.5,
     },
-    iconColor: 'outline',
+    iconColor: 'onDisabled',
   },
 };
+
+export function getIconButtonStyles(props: IconButtonProps) {
+  const styles =
+    ICON_BUTTON_STYLES[props.disabled ? 'disabled' : props.type || 'default'];
+  return styles;
+}

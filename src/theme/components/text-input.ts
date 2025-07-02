@@ -6,17 +6,19 @@ import { TEXT_STYLES } from './text';
 import { horizontalScale } from '../responsive';
 import { BORDERS } from '../borders';
 import { commonStyles } from '../common';
+import { TextInputProps } from '@components/core';
 
 export type TextInputType = {
   primary: ContainerTextStyle;
   error: ContainerTextStyle;
   disabled: ContainerTextStyle;
+  focus: ContainerTextStyle;
 };
 
 const baseStyle: ViewStyle = {
   ...commonStyles.row,
   borderWidth: 1,
-  borderColor: COLORS.outline,
+  borderColor: COLORS.text,
   borderRadius: BORDERS.sm,
   paddingHorizontal: Platform.select({
     ios: horizontalScale(10),
@@ -61,11 +63,39 @@ export const TEXT_INPUT_STYLES: Record<
   disabled: {
     container: {
       ...baseStyle,
-      backgroundColor: COLORS.surfaceVariant,
+      backgroundColor: COLORS.background,
+      borderColor: COLORS.disabled,
     },
     text: {
       ...baseTextStyle,
-      color: COLORS.outline,
+      color: COLORS.onDisabled,
+    },
+  },
+  focus: {
+    container: {
+      ...baseStyle,
+      backgroundColor: COLORS.background,
+      borderColor: COLORS.primary,
+    },
+    text: {
+      ...baseTextStyle,
+      color: COLORS.primary,
     },
   },
 };
+
+export function getTextInputStyles(props: TextInputProps) {
+  console.log('get style: ', props.type);
+
+  const styles = TEXT_INPUT_STYLES[props.type || 'primary'];
+
+  if (props.editable === false) {
+    return TEXT_INPUT_STYLES.disabled;
+  }
+
+  if (props.error) {
+    return TEXT_INPUT_STYLES.error;
+  }
+
+  return styles;
+}

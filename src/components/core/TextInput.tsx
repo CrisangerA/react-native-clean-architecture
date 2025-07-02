@@ -8,7 +8,7 @@ import {
 // Theme
 import { theme, Color } from '@theme/index';
 import { Icon, Margin, Text } from './index';
-import { TEXT_INPUT_STYLES, TextInputType } from '@theme/components';
+import { getTextInputStyles, TextInputType } from '@theme/components';
 
 export interface TextInputBaseProps {
   label?: string;
@@ -33,13 +33,8 @@ export interface TextInputProps extends TextInputBaseProps, RNTextInputProps {}
  * specified type.
  */
 const TextInput = React.forwardRef<RNTextInput, TextInputProps>(
-  ({ label, error, type = 'primary', iconLeft, iconRight, ...rest }, ref) => {
-    if (rest.editable === false) {
-      type = 'disabled';
-    }
-    if (error) {
-      type = 'error';
-    }
+  (props, ref) => {
+    const { label, error, iconLeft, iconRight, ...rest } = props;
 
     if (rest.currency) {
       if (rest.value && rest.value !== '') {
@@ -56,8 +51,11 @@ const TextInput = React.forwardRef<RNTextInput, TextInputProps>(
         }
       }
     }
-
-    const styles = TEXT_INPUT_STYLES[type];
+    const [focusActive, setFocusActive] = React.useState(false);
+    const styles = getTextInputStyles({
+      ...props,
+      type: focusActive ? 'focus' : props.type,
+    });
 
     return (
       <View pointerEvents={rest.pointerEvents}>
@@ -82,6 +80,12 @@ const TextInput = React.forwardRef<RNTextInput, TextInputProps>(
           )}
           <RNTextInput
             ref={ref}
+            onFocus={() => {
+              setFocusActive(true);
+            }}
+            onBlur={() => {
+              setFocusActive(false);
+            }}
             style={[
               styles.text,
               iconLeft && localStyles.textIconLeft,
