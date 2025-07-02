@@ -91,6 +91,7 @@ const TextInput = React.forwardRef<RNTextInput, TextInputProps>(
               iconLeft && localStyles.textIconLeft,
               iconRight && localStyles.textIconRight,
             ]}
+            placeholderTextColor={theme.colors.textSecondary}
             {...rest}
           />
           {iconRight && (

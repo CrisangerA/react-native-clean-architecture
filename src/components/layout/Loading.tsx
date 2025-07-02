@@ -9,11 +9,7 @@ interface LoadingProps {
   size?: 'small' | 'large';
   color?: keyof Color;
 }
-export default function Loading({
-  label,
-  size,
-  color = 'primary',
-}: LoadingProps) {
+export default function Loading({ label, size, color = 'text' }: LoadingProps) {
   return (
     <View style={styles.root}>
       <ActivityIndicator size={size} color={theme.colors[color]} />
